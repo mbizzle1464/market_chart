@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --gray-black: rgb(65, 65, 65);
+  --gray-light: #666;
+  --widget-links: rgb(247, 167, 20);
+  --up: green;
+  --down: red;
+}
+body {
+  color: var(--gray-light);
+}
+
+/* div,
+header,
+footer,
+nav,
+h1,
+h2 {
+  border: 1px red solid;
+} */
+h1,
+h2,
+h3 {
+  margin: 0px;
+  color: var(--gray-black);
+}
+
+/* General Page Layout Settings */
+.container {
+  max-width: 968px;
+  margin: auto;
+  display: grid;
+}
+
+/* General Widget Settings */
+.widget {
+  padding: 20px;
+  border: 1px var(--gray-black) solid;
+}
+.widget a:link,
+.widget a:hover,
+.widget a:visited {
+  color: var(--widget-links);
+  text-decoration: none;
+}
+.widget_content-area {
+  display: grid;
+}
+.light-text {
+  color: var(--gray-light);
+}
+.ticker {
+  color: var(--down);
+}
+
+/* Company Details Component Settings */
+.company-quick-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.company-quick-view_pricing h2 {
+  font-size: 50px;
+}
+.company-quick-view_pricing {
+  justify-content: end;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
