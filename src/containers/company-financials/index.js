@@ -2,16 +2,17 @@ import React from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getFinancialsData } from "../../modules/PullStocks";
+import { getIexData } from "../../modules/PullStocks";
 
 const Financials = props => {
   const currentCompany = props.path.split("/");
 
   if (!props.reportDate) {
-    props.getFinancialsData(currentCompany[2]);
+    props.getIexData(currentCompany[2], "financials");
   }
   return (
     <div className="widget">
+      <h1>Financials</h1>
       <div className="report-date">Reporting Date: {props.reportDate}</div>
       <div className="gross-profit">Gross Profit: {props.grossProfit}</div>
       <div className="operating-revenue">
@@ -74,7 +75,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getFinancialsData,
+      getIexData,
       changePage: () => push("/about-us")
     },
     dispatch

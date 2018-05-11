@@ -6,6 +6,10 @@ import CompanyDetails from "../company";
 import CompanyDescription from "../company-description";
 import CompanyFinancials from "../company-financials";
 import CompanyNews from "../company-news";
+import CompanyStats from "../company-stats";
+import CompanyEarnings from "../company-earnings";
+import CompanyPeers from "../company-peers";
+import CompanyChart from "../company-chart";
 
 const App = () => (
   <div>
@@ -27,6 +31,10 @@ const App = () => (
             <CompanyDescription />
             <CompanyFinancials />
             <CompanyNews />
+            <CompanyStats />
+            <CompanyEarnings />
+            <CompanyPeers />
+            <CompanyChart />
           </div>
         )}
       />

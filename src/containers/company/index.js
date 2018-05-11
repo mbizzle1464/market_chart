@@ -2,14 +2,14 @@ import React from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getData, getGeneralData } from "../../modules/PullStocks";
+import { getIexData } from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
 const Home = props => {
   const currentCompany = props.path.split("/");
 
   if (!props.quote[0]) {
-    props.getData(currentCompany[2]);
-    props.getGeneralData(currentCompany[2]);
+    props.getIexData(currentCompany[2], "book");
+    props.getIexData(currentCompany[2], "company");
   }
   return (
     <div className="company-quick-view widget">
@@ -48,8 +48,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getData,
-      getGeneralData,
+      getIexData,
       changePage: () => push("/about-us")
     },
     dispatch
