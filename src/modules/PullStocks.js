@@ -1,5 +1,6 @@
 import axios from "axios";
 import io from "socket.io-client";
+import numeral from "numeral";
 export const RECEIVE_BOOK = "PullStocks/RECEIVE_BOOK";
 export const RECEIVE_SOCKET = "PullStocks/RECEIVE_SOCKET";
 export const RECEIVE_DESCRIPTION = "PullStocks/RECEIVE_DESCRIPTION";
@@ -17,7 +18,8 @@ const initialState = {
   news: [],
   marketCap: "",
   peers: [],
-  chart: []
+  chart: [],
+  website: ""
 };
 
 // export default (state = initialState, action) => {
@@ -39,9 +41,14 @@ export default (state = initialState, action) => {
         return [...state];
       } else {
         init();
-        let quote = Object.keys(action.payload[0].quote).map(
-          k => action.payload[0].quote[k]
-        );
+        // let quote = Object.keys(action.payload[0].quote).map(
+        //   k => action.payload[0].quote[k]
+        // );
+        let quote = action.payload[0].quote;
+        quote.change = quote.change.toFixed(2);
+        quote.latestPrice = numeral(quote.latestPrice).format("$0,0.00");
+        // quote.changePercent = (quote.changePercent * 100).toFixed(2);
+        quote.changePercent = numeral(quote.changePercent).format("0.00%");
 
         return {
           ...state,
@@ -206,20 +213,45 @@ export default (state = initialState, action) => {
         init();
 
         let reportDate = action.payload[0].financials[0].reportDate;
-        let grossProfit = action.payload[0].financials[0].grossProfit;
-        let operatingIncome = action.payload[0].financials[0].operatingIncome;
-        let operatingRevenue = action.payload[0].financials[0].operatingRevenue;
-        let netIncome = action.payload[0].financials[0].netIncome;
-        let researchAndDevelopment =
-          action.payload[0].financials[0].researchAndDevelopment;
-        let operatingExpense = action.payload[0].financials[0].operatingExpense;
-        let currentAssets = action.payload[0].financials[0].currentAssets;
-        let totalAssets = action.payload[0].financials[0].totalAssets;
-        let totalLiabilities = action.payload[0].financials[0].totalLiabilities;
-        let currentCash = action.payload[0].financials[0].currentCash;
-        let currentDebt = action.payload[0].financials[0].currentDebt;
-        let totalCash = action.payload[0].financials[0].totalCash;
-        let totalDebt = action.payload[0].financials[0].totalDebt;
+        let grossProfit = numeral(
+          action.payload[0].financials[0].grossProfit
+        ).format("$0,0.");
+        let operatingIncome = numeral(
+          action.payload[0].financials[0].operatingIncome
+        ).format("$0,0");
+        let operatingRevenue = numeral(
+          action.payload[0].financials[0].operatingRevenue
+        ).format("$0,0");
+        let netIncome = numeral(
+          action.payload[0].financials[0].netIncome
+        ).format("$0,0");
+        let researchAndDevelopment = numeral(
+          action.payload[0].financials[0].researchAndDevelopment
+        ).format("$0,0");
+        let operatingExpense = numeral(
+          action.payload[0].financials[0].operatingExpense
+        ).format("$0,0");
+        let currentAssets = numeral(
+          action.payload[0].financials[0].currentAssets
+        ).format("$0,0");
+        let totalAssets = numeral(
+          action.payload[0].financials[0].totalAssets
+        ).format("$0,0");
+        let totalLiabilities = numeral(
+          action.payload[0].financials[0].totalLiabilities
+        ).format("$0,0");
+        let currentCash = numeral(
+          action.payload[0].financials[0].currentCash
+        ).format("$0,0");
+        let currentDebt = numeral(
+          action.payload[0].financials[0].currentDebt
+        ).format("$0,0");
+        let totalCash = numeral(
+          action.payload[0].financials[0].totalCash
+        ).format("$0,0");
+        let totalDebt = numeral(
+          action.payload[0].financials[0].totalDebt
+        ).format("$0,0");
         let shareholderEquity =
           action.payload[0].financials[0].shareholderEquity;
         let cashChange = action.payload[0].financials[0].cashChange;

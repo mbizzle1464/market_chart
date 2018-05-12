@@ -72,3 +72,11 @@ h3 {
 .red {
   color: red;
 }
+.key-value {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.company-description {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}

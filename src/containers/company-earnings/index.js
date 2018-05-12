@@ -13,27 +13,33 @@ const Description = props => {
   return (
     <div className="widget">
       <h1>Earnings</h1>
-      <div className="companyName">Earnings Per Share: {props.actualEPS}</div>
-      <div className="consensusEPS">consensusEPS: {props.consensusEPS}</div>
-      <div className="estimatedEPS">estimatedEPS: {props.estimatedEPS}</div>
-      <div className="announceTime">announceTime: {props.announceTime}</div>
-      <div className="numberOfEstimates">
-        numberOfEstimates: {props.numberOfEstimates}
+      <div className="key-value">
+        <div className="companyName">Earnings Per Share: {props.actualEPS}</div>
+        <div className="consensusEPS">consensusEPS: {props.consensusEPS}</div>
+        <div className="estimatedEPS">estimatedEPS: {props.estimatedEPS}</div>
+        <div className="announceTime">announceTime: {props.announceTime}</div>
+        <div className="numberOfEstimates">
+          numberOfEstimates: {props.numberOfEstimates}
+        </div>
+        <div className="EPSSurpriseDollar">
+          EPSSurpriseDollar: {props.EPSSurpriseDollar}
+        </div>
+        <div className="EPSReportDate">
+          EPSReportDate: {props.EPSReportDate}
+        </div>
+        <div className="fiscalPeriod">fiscalPeriod: {props.fiscalPeriod}</div>
+        <div className="fiscalEndDate">
+          fiscalEndDate: {props.fiscalEndDate}
+        </div>
+        <div className="yearAgo">yearAgo: {props.yearAgo}</div>
+        <div className="yearAgoChangePercent">
+          yearAgoChangePercent: {props.yearAgoChangePercent}
+        </div>
+        <div className="estimatedChangePercent">
+          estimatedChangePercent: {props.estimatedChangePercent}
+        </div>
+        <div className="symbolId">symbolId: {props.symbolId}</div>
       </div>
-      <div className="EPSSurpriseDollar">
-        EPSSurpriseDollar: {props.EPSSurpriseDollar}
-      </div>
-      <div className="EPSReportDate">EPSReportDate: {props.EPSReportDate}</div>
-      <div className="fiscalPeriod">fiscalPeriod: {props.fiscalPeriod}</div>
-      <div className="fiscalEndDate">fiscalEndDate: {props.fiscalEndDate}</div>
-      <div className="yearAgo">yearAgo: {props.yearAgo}</div>
-      <div className="yearAgoChangePercent">
-        yearAgoChangePercent: {props.yearAgoChangePercent}
-      </div>
-      <div className="estimatedChangePercent">
-        estimatedChangePercent: {props.estimatedChangePercent}
-      </div>
-      <div className="symbolId">symbolId: {props.symbolId}</div>
     </div>
   );
 };

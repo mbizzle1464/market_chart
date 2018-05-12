@@ -14,13 +14,19 @@ const Description = props => {
   return (
     <div className="widget">
       <h1>Description</h1>
-      <div className="description">{props.description}</div>
-      <div className="ceo">CEO: {props.ceo}</div>
-      <div className="sector">Sector: {props.sector}</div>
-      <div className="industry">Industry: {props.industry}</div>
 
-      <div className="logo">
-        <img src={props.logo} alt="Company Logo" />{" "}
+      <div className="company-description">
+        <div className="logo">
+          <img src={props.logo} alt="Company Logo" />{" "}
+        </div>
+        <div className="description">
+          {props.description}
+          <div>
+            <div className="ceo">CEO: {props.ceo}</div>
+            <div className="sector">Sector: {props.sector}</div>
+            <div className="industry">Industry: {props.industry}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
