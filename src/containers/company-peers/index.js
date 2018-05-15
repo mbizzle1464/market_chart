@@ -14,14 +14,9 @@ const Description = props => {
     // TODO: Refactor to a map
     // TODO: Add in company name and current price and price
     <div className="widget">
-      <h1>Peers</h1>
-      <div>{props.peers[0]}</div>
-      <div>{props.peers[1]}</div>
-      <div>{props.peers[2]}</div>
-      <div>{props.peers[3]}</div>
-      <div>{props.peers[4]}</div>
-      <div>{props.peers[5]}</div>
-      <div>{props.peers[6]}</div>
+      <span class="parameter-name">Peers </span>
+      {props.peers[1]} {props.peers[0]} {props.peers[2]} {props.peers[3]}{" "}
+      {props.peers[4]} {props.peers[5]} {props.peers[6]}
     </div>
   );
 };

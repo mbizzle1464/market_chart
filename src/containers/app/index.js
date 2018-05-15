@@ -13,11 +13,11 @@ import CompanyChart from "../company-chart";
 
 const App = () => (
   <div>
-    <header>
+    {/* <header>
       <Link to="/">Home </Link>
       <Link to="/companies/msft">MSFT</Link>
       <Link to="/companies/aapl">AAPL</Link>
-    </header>
+    </header> */}
 
     <main>
       <Route exact path="/" component={Home} />
@@ -28,13 +28,13 @@ const App = () => (
         component={() => (
           <div>
             <CompanyDetails />
+            <CompanyChart />
             <CompanyDescription />
-            <CompanyFinancials />
             <CompanyNews />
+            <CompanyFinancials />
             <CompanyStats />
             <CompanyEarnings />
             <CompanyPeers />
-            <CompanyChart />
           </div>
         )}
       />

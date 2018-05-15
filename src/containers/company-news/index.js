@@ -7,57 +7,63 @@ import { getIexData } from "../../modules/PullStocks";
 
 const News = props => {
   const currentCompany = props.path.split("/");
-
   if (!props.news[0]) {
     props.getIexData(currentCompany[2], "news");
     return <p>no data</p>;
   } else {
     return (
-      <div className="widget">
+      <div className="widget news">
         <h1>News</h1>
-        <div className="headline">
-          {" "}
-          <h2>{props.news[0].headline}</h2>
+        <div className="news-story-wrapper">
+          <div className="headline">
+            {" "}
+            <h2>{props.news[0].headline}</h2>
+          </div>
+          <div className="datetime">
+            {props.news[0].datetime} - {props.news[0].source}
+          </div>
+          <div className="summary">
+            {props.news[0].summary} <a href={props.news[0].url}>Read Article</a>
+          </div>
         </div>
-        <div className="datetime">{props.news[0].datetime}</div>
-        <div className="source">{props.news[0].source}</div>
-        <div className="url">
-          <a href={props.news[0].url}>Read Article</a>
+        <div className="news-story-wrapper">
+          <div className="headline">
+            {" "}
+            <h2>{props.news[1].headline}</h2>
+          </div>
+          <div className="datetime">
+            {props.news[1].datetime} - {props.news[1].source}
+          </div>
+          <div className="summary">
+            {props.news[1].summary} <a href={props.news[1].url}>Read Article</a>
+          </div>
         </div>
-        <div className="summary">{props.news[0].summary}</div>
+        <div className="news-story-wrapper">
+          <div className="headline">
+            {" "}
+            <h2>{props.news[2].headline}</h2>
+          </div>
+          <div className="datetime">
+            {props.news[2].datetime} - {props.news[2].source}
+          </div>
+          <div className="summary">
+            {props.news[2].summary} <a href={props.news[2].url}>Read Article</a>
+          </div>
+        </div>
+        <div className="news-story-wrapper">
+          <div className="headline">
+            {" "}
+            <h2>{props.news[3].headline}</h2>
+          </div>
+          <div className="datetime">
+            {props.news[3].datetime} - {props.news[3].source}
+          </div>
+          <div className="summary">
+            {props.news[3].summary}
+            <a href={props.news[3].url}>Read Article</a>
+          </div>
+        </div>
 
-        <div className="headline">
-          {" "}
-          <h2>{props.news[1].headline}</h2>
-        </div>
-        <div className="datetime">{props.news[1].datetime}</div>
-        <div className="source">{props.news[1].source}</div>
-        <div className="url">
-          <a href={props.news[1].url}>Read Article</a>
-        </div>
-        <div className="summary">{props.news[1].summary}</div>
-
-        <div className="headline">
-          {" "}
-          <h2>{props.news[2].headline}</h2>
-        </div>
-        <div className="datetime">{props.news[2].datetime}</div>
-        <div className="source">{props.news[2].source}</div>
-        <div className="url">
-          <a href={props.news[2].url}>Read Article</a>
-        </div>
-        <div className="summary">{props.news[2].summary}</div>
-
-        <div className="headline">
-          {" "}
-          <h2>{props.news[3].headline}</h2>
-        </div>
-        <div className="datetime">{props.news[3].datetime}</div>
-        <div className="source">{props.news[3].source}</div>
-        <div className="url">
-          <a href={props.news[3].url}>Read Article</a>
-        </div>
-        <div className="summary">{props.news[3].summary}</div>
         {/* <h1>{props.news[0]}</h1>
         {console.log(JSON.stringify(props.news))} */}
       </div>

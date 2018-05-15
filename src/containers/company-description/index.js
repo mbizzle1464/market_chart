@@ -7,24 +7,31 @@ import { getIexData } from "../../modules/PullStocks";
 const Description = props => {
   const currentCompany = props.path.split("/");
 
-  if (!props.website) {
+  if (props.awaitingState) {
     props.getIexData(currentCompany[2], "company");
     props.getIexData(currentCompany[2], "logo");
   }
   return (
     <div className="widget">
-      <h1>Description</h1>
-
       <div className="company-description">
         <div className="logo">
           <img src={props.logo} alt="Company Logo" />{" "}
         </div>
         <div className="description">
-          {props.description}
+          <p className="summary">{props.description}</p>
           <div>
-            <div className="ceo">CEO: {props.ceo}</div>
-            <div className="sector">Sector: {props.sector}</div>
-            <div className="industry">Industry: {props.industry}</div>
+            <div className="ceo">
+              <span className="parameter-name">CEO </span>
+              {props.ceo}
+            </div>
+            <div className="sector">
+              <span className="parameter-name">Sector </span>
+              {props.sector}
+            </div>
+            <div className="industry">
+              <span className="parameter-name">Industry </span>
+              {props.industry}
+            </div>
           </div>
         </div>
       </div>
@@ -39,7 +46,8 @@ const mapStateToProps = state => ({
   ceo: state.PullStocks.ceo,
   sector: state.PullStocks.sector,
   industry: state.PullStocks.industry,
-  logo: state.PullStocks.companyLogoUrl
+  logo: state.PullStocks.companyLogoUrl,
+  awaitingState: state.PullStocks.awaitingState
 });
 
 const mapDispatchToProps = dispatch =>

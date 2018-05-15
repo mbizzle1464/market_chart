@@ -1,6 +1,8 @@
 import axios from "axios";
 import io from "socket.io-client";
 import numeral from "numeral";
+import moment from "moment";
+
 export const RECEIVE_BOOK = "PullStocks/RECEIVE_BOOK";
 export const RECEIVE_SOCKET = "PullStocks/RECEIVE_SOCKET";
 export const RECEIVE_DESCRIPTION = "PullStocks/RECEIVE_DESCRIPTION";
@@ -11,6 +13,7 @@ export const RECEIVE_EARNINGS = "PullStocks/RECEIVE_EARNINGS";
 export const RECEIVE_LOGO = "PullStocks/RECEIVE_LOGO";
 export const RECEIVE_PEERS = "PullStocks/RECEIVE_PEERS";
 export const RECEIVE_CHART = "PullStocks/RECEIVE_CHART";
+export const RELOAD_COMPANY = "PullStocks/RELOAD_COMPANY";
 
 const initialState = {
   quote: [],
@@ -18,8 +21,9 @@ const initialState = {
   news: [],
   marketCap: "",
   peers: [],
-  chart: [],
-  website: ""
+  website: "",
+  awaitingState: true,
+  awaitingChart: true
 };
 
 // export default (state = initialState, action) => {
@@ -52,7 +56,8 @@ export default (state = initialState, action) => {
 
         return {
           ...state,
-          quote
+          quote,
+          awaitingState: false
         };
       }
     case RECEIVE_DESCRIPTION:
@@ -81,6 +86,12 @@ export default (state = initialState, action) => {
       } else {
         init();
         let news = action.payload[0];
+        // news[0].datetime = news[0].datetime.substring(0, 10);
+        for (let i = 0; i < news.length; i++) {
+          news[i].datetime = moment(
+            moment(news[i].datetime.substring(0, 10), "YYYY-MM-DD")
+          ).format("MM-DD-YYYY");
+        }
 
         // console.log(news);
 
@@ -109,22 +120,41 @@ export default (state = initialState, action) => {
       } else {
         init();
         let peers = action.payload[0];
-        console.log(peers);
         return {
           ...state,
           peers
         };
       }
+    case RELOAD_COMPANY:
+      init();
+      let awaitingState = true;
+      console.log("awaiting state" + awaitingState);
+      return {
+        ...state,
+        awaitingState
+      };
     case RECEIVE_CHART:
       if (!action.payload) {
         return [...state];
       } else {
         init();
-        let chart = action.payload[0];
-        console.log(chart);
+        let awaitingChart = false;
+        let chart = {};
+        chart.data = {};
+        chart.data.datasets = [{}];
+        chart.data.datasets[0].data = [];
+        chart.data.labels = [];
+        // chart.data.datasets[0].data = action.payload[0];
+        for (let i = 0; i < action.payload[0].length; i++) {
+          chart.data.datasets[0].data.push(action.payload[0][i].close);
+        }
+        for (let k = 0; k < action.payload[0].length; k++) {
+          chart.data.labels.push(action.payload[0][k].label);
+        }
         return {
           ...state,
-          chart
+          chart,
+          awaitingChart
         };
       }
     case RECEIVE_STATS:
@@ -212,7 +242,10 @@ export default (state = initialState, action) => {
       } else {
         init();
 
-        let reportDate = action.payload[0].financials[0].reportDate;
+        let reportDate = moment(
+          moment(action.payload[0].financials[0].reportDate, "YYYY-MM-DD")
+        ).format("MM-DD-YYYY");
+        // let reportDate = action.payload[0].financials[0].reportDate;
         let grossProfit = numeral(
           action.payload[0].financials[0].grossProfit
         ).format("$0,0.");
@@ -252,12 +285,18 @@ export default (state = initialState, action) => {
         let totalDebt = numeral(
           action.payload[0].financials[0].totalDebt
         ).format("$0,0");
-        let shareholderEquity =
-          action.payload[0].financials[0].shareholderEquity;
-        let cashChange = action.payload[0].financials[0].cashChange;
-        let cashFlow = action.payload[0].financials[0].cashFlow;
-        let operatingGainsLosses =
-          action.payload[0].financials.operatingGainsLosses;
+        let shareholderEquity = numeral(
+          action.payload[0].financials[0].shareholderEquity
+        ).format("$0,0");
+        let cashChange = numeral(
+          action.payload[0].financials[0].cashChange
+        ).format("$0,0");
+        let cashFlow = numeral(action.payload[0].financials[0].cashFlow).format(
+          "$0,0"
+        );
+        let operatingGainsLosses = numeral(
+          action.payload[0].financials[0].operatingGainsLosses
+        ).format("$0,0");
         return {
           ...state,
           reportDate,
@@ -328,6 +367,11 @@ const url = `https://api.iextrading.com/1.0/stock/`;
 export const getIexData = (currentCompany, requestType) => async dispatch => {
   const res = await axios.get(`${url}${currentCompany}/${requestType}`);
   switch (requestType) {
+    case "reload":
+      dispatch({
+        type: RELOAD_COMPANY
+      });
+      break;
     case "book":
       dispatch({
         type: RECEIVE_BOOK,
