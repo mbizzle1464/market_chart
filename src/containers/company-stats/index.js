@@ -11,83 +11,143 @@ const Description = props => {
     props.getIexData(currentCompany[2], "stats");
   }
   return (
-    <div className="widget">
-      <h1>Key Stats</h1>
-      <div className="key-value">
-        <div className="companyName">companyName: {props.companyName}</div>
-        <div className="marketcap">marketcap: {props.marketcap}</div>
-        <div className="week52high">week52high: {props.week52high}</div>
-        <div className="week52low">week52low: {props.week52low}</div>
-        <div className="week52change">week52change: {props.week52change}</div>
-        <div className="shortInterest">
-          shortInterest: {props.shortInterest}
-        </div>
-        <div className="dividendRate">dividendRate: {props.dividendRate}</div>
-        <div className="dividendYield">
-          dividendYield: {props.dividendYield}
-        </div>
-        <div className="exDividendDate">
-          exDividendDate: {props.exDividendDate}
-        </div>
-        <div className="latestEPS">latestEPS: {props.latestEPS}</div>
-        <div className="latestEPSDate">
-          latestEPSDate: {props.latestEPSDate}
-        </div>
-        <div className="sharesOutstanding">
-          sharesOutstanding: {props.sharesOutstanding}
-        </div>
-        <div className="consensusEPS">consensusEPS: {props.consensusEPS}</div>
-        <div className="numberOfEstimates">
-          numberOfEstimates: {props.numberOfEstimates}
-        </div>
-        <div className="symbol">symbol: {props.symbol}</div>
-        <div className="revenuePerShare">
-          revenuePerShare: {props.revenuePerShare}
-        </div>
-        <div className="peRatioLow">peRatioLow: {props.peRatioLow}</div>
-        <div className="returnOnCapital">
-          returnOnCapital: {props.returnOnCapital}
-        </div>
-        <div className="priceToSales">priceToSales: {props.priceToSales}</div>
-        <div className="priceToBook">priceToBook: {props.priceToBook}</div>
-        <div className="day200MovingAvg">
-          day200MovingAvg: {props.day200MovingAvg}
-        </div>
-        <div className="day50MovingAvg">
-          day50MovingAvg: {props.day50MovingAvg}
-        </div>
-        <div className="institutionPercent">
-          institutionPercent: {props.institutionPercent}
-        </div>
-        <div className="insiderPercent">
-          insiderPercent: {props.insiderPercent}
-        </div>
-        <div className="year5ChangePercent">
-          year5ChangePercent: {props.year5ChangePercent}
-        </div>
-        <div className="year2ChangePercent">
-          year2ChangePercent: {props.year2ChangePercent}
-        </div>
-        <div className="year1ChangePercent">
-          year1ChangePercent: {props.year1ChangePercent}
-        </div>
-        <div className="ytdChangePercent">
-          ytdChangePercent: {props.ytdChangePercent}
-        </div>
-        <div className="month6ChangePercent">
-          month6ChangePercent: {props.month6ChangePercent}
-        </div>
-        <div className="month3ChangePercent">
-          month3ChangePercent: {props.month3ChangePercent}
-        </div>
-        <div className="month1ChangePercent">
-          month1ChangePercent: {props.month1ChangePercent}
-        </div>
-        <div className="day5ChangePercent">
-          day5ChangePercent: {props.day5ChangePercent}
-        </div>
-        <div className="day30ChangePercent">
-          day30ChangePercent: {props.day30ChangePercent}
+    <div>
+      <div className="stripe" />
+      <div className="widget">
+        <h1>Key Stats</h1>
+        <div className="key-value">
+          <div className="companyName">
+            <div className="financial-label">companyName</div>
+            <div className="financial-data">{props.companyName}</div>
+          </div>
+          <div className="marketcap">
+            <div className="financial-label">marketcap</div>
+            <div className="financial-data">{props.marketcap}</div>
+          </div>
+          <div className="week52high">
+            <div className="financial-label">week52high</div>
+            <div className="financial-data">{props.week52high}</div>
+          </div>
+          <div className="week52low">
+            <div className="financial-label">week52low</div>
+            <div className="financial-data">{props.week52low}</div>
+          </div>
+          <div className="week52change">
+            <div className="financial-label">week52change</div>
+            <div className="financial-data">{props.week52change}</div>
+          </div>
+          <div className="shortInterest">
+            <div className="financial-label">shortInterest</div>
+            <div className="financial-data">{props.shortInterest}</div>
+          </div>
+          <div className="dividendRate">
+            <div className="financial-label">dividendRate</div>
+            <div className="financial-data">{props.dividendRate}</div>
+          </div>
+          <div className="dividendYield">
+            <div className="financial-label">dividendYield</div>
+            <div className="financial-data">{props.dividendYield}</div>
+          </div>
+          <div className="exDividendDate">
+            <div className="financial-label">exDividendDate</div>
+            <div className="financial-data">{props.exDividendDate}</div>
+          </div>
+          <div className="latestEPS">
+            <div className="financial-label">latestEPS</div>
+            <div className="financial-data">{props.latestEPS}</div>
+          </div>
+          <div className="latestEPSDate">
+            <div className="financial-label">latestEPSDate</div>
+            <div className="financial-data">{props.latestEPSDate}</div>
+          </div>
+          <div className="sharesOutstanding">
+            <div className="financial-label">sharesOutstanding</div>
+            <div className="financial-data">{props.sharesOutstanding}</div>
+          </div>
+          <div className="consensusEPS">
+            <div className="financial-label">consensusEPS</div>
+            <div className="financial-data">{props.consensusEPS}</div>
+          </div>
+          <div className="numberOfEstimates">
+            <div className="financial-label">numberOfEstimates</div>
+            <div className="financial-data">{props.numberOfEstimates}</div>
+          </div>
+          <div className="symbol">
+            <div className="financial-label">symbol</div>
+            <div className="financial-data">{props.symbol}</div>
+          </div>
+          <div className="revenuePerShare">
+            <div className="financial-label">revenuePerShare</div>
+            <div className="financial-data">{props.revenuePerShare}</div>
+          </div>
+          <div className="peRatioLow">
+            <div className="financial-label">peRatioLow</div>
+            <div className="financial-data">{props.peRatioLow}</div>
+          </div>
+          <div className="returnOnCapital">
+            <div className="financial-label">returnOnCapital</div>
+            <div className="financial-data">{props.returnOnCapital}</div>
+          </div>
+          <div className="priceToSales">
+            <div className="financial-label">priceToSales</div>
+            <div className="financial-data">{props.priceToSales}</div>
+          </div>
+          <div className="priceToBook">
+            <div className="financial-label">priceToBook</div>
+            <div className="financial-data">{props.priceToBook}</div>
+          </div>
+          <div className="day200MovingAvg">
+            <div className="financial-label">day200MovingAvg</div>
+            <div className="financial-data">{props.day200MovingAvg}</div>
+          </div>
+          <div className="day50MovingAvg">
+            <div className="financial-label">day50MovingAvg</div>
+            <div className="financial-data">{props.day50MovingAvg}</div>
+          </div>
+          <div className="institutionPercent">
+            <div className="financial-label">institutionPercent</div>
+            <div className="financial-data">{props.institutionPercent}</div>
+          </div>
+          <div className="insiderPercent">
+            <div className="financial-label">insiderPercent</div>
+            <div className="financial-data">{props.insiderPercent}</div>
+          </div>
+          <div className="year5ChangePercent">
+            <div className="financial-label">year5ChangePercent</div>
+            <div className="financial-data">{props.year5ChangePercent}</div>
+          </div>
+          <div className="year2ChangePercent">
+            <div className="financial-label">year2ChangePercent</div>
+            <div className="financial-data">{props.year2ChangePercent}</div>
+          </div>
+          <div className="year1ChangePercent">
+            <div className="financial-label">year1ChangePercent</div>
+            <div className="financial-data">{props.year1ChangePercent}</div>
+          </div>
+          <div className="ytdChangePercent">
+            <div className="financial-label">ytdChangePercent</div>
+            <div className="financial-data">{props.ytdChangePercent}</div>
+          </div>
+          <div className="month6ChangePercent">
+            <div className="financial-label">month6ChangePercent</div>
+            <div className="financial-data">{props.month6ChangePercent}</div>
+          </div>
+          <div className="month3ChangePercent">
+            <div className="financial-label">month3ChangePercent</div>
+            <div className="financial-data">{props.month3ChangePercent}</div>
+          </div>
+          <div className="month1ChangePercent">
+            <div className="financial-label">month1ChangePercent</div>
+            <div className="financial-data">{props.month1ChangePercent}</div>
+          </div>
+          <div className="day5ChangePercent">
+            <div className="financial-label">day5ChangePercent</div>
+            <div className="financial-data">{props.day5ChangePercent}</div>
+          </div>
+          <div className="day30ChangePercent">
+            <div className="financial-label">day30ChangePercent</div>
+            <div className="financial-data">{props.day30ChangePercent}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -141,4 +201,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Description);

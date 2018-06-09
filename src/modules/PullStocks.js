@@ -161,43 +161,71 @@ export default (state = initialState, action) => {
       if (!action.payload) {
         return [...state];
       } else {
-        init();
-
-        let marketCap = action.payload[0].marketcap;
-
+        // init();
+        let marketCap = numeral(action.payload[0].marketcap).format("$0.00a");
         let companyName = action.payload[0].companyName;
-        let marketcap = action.payload[0].marketcap;
-        let week52high = action.payload[0].week52high;
-        let week52low = action.payload[0].week52low;
-        let week52change = action.payload[0].week52change;
+        let marketcap = numeral(action.payload[0].marketcap).format("$0.00a");
+        let week52high = numeral(action.payload[0].week52high).format("$0.00a");
+        let week52low = numeral(action.payload[0].week52low).format("$0.00a");
+        let week52change = numeral(action.payload[0].week52change).format(
+          "$0.00a"
+        );
         let shortInterest = action.payload[0].shortInterest;
         let dividendRate = action.payload[0].dividendRate;
         let dividendYield = action.payload[0].dividendYield;
         let exDividendDate = action.payload[0].exDividendDate;
-        let latestEPS = action.payload[0].latestEPS;
+        let latestEPS = numeral(action.payload[0].latestEPS).format("$0.00a");
         let latestEPSDate = action.payload[0].latestEPSDate;
         let sharesOutstanding = action.payload[0].sharesOutstanding;
         let consensusEPS = action.payload[0].consensusEPS;
         let numberOfEstimates = action.payload[0].numberOfEstimates;
         let symbol = action.payload[0].symbol;
-        let revenuePerShare = action.payload[0].revenuePerShare;
+        let revenuePerShare = numeral(action.payload[0].revenuePerShare).format(
+          "$0.00a"
+        );
         let peRatioLow = action.payload[0].peRatioLow;
         let returnOnCapital = action.payload[0].returnOnCapital;
         let priceToSales = action.payload[0].priceToSales;
         let priceToBook = action.payload[0].priceToBook;
-        let day200MovingAvg = action.payload[0].day200MovingAvg;
-        let day50MovingAvg = action.payload[0].day50MovingAvg;
-        let institutionPercent = action.payload[0].institutionPercent;
-        let insiderPercent = action.payload[0].insiderPercent;
-        let year5ChangePercent = action.payload[0].year5ChangePercent;
-        let year2ChangePercent = action.payload[0].year2ChangePercent;
-        let year1ChangePercent = action.payload[0].year1ChangePercent;
-        let ytdChangePercent = action.payload[0].ytdChangePercent;
-        let month6ChangePercent = action.payload[0].month6ChangePercent;
-        let month3ChangePercent = action.payload[0].month3ChangePercent;
-        let month1ChangePercent = action.payload[0].month1ChangePercent;
-        let day5ChangePercent = action.payload[0].day5ChangePercent;
-        let day30ChangePercent = action.payload[0].day30ChangePercent;
+        let day200MovingAvg = numeral(action.payload[0].day200MovingAvg).format(
+          "$0.00a"
+        );
+        let day50MovingAvg = numeral(action.payload[0].day50MovingAvg).format(
+          "$0.00a"
+        );
+        let institutionPercent = numeral(
+          action.payload[0].institutionPercent / 100
+        ).format("0.00%");
+        let insiderPercent = numeral(
+          action.payload[0].insiderPercent / 100
+        ).format("0.00%");
+        let year5ChangePercent = numeral(
+          action.payload[0].year5ChangePercent / 100
+        ).format("0.00%");
+        let year2ChangePercent = numeral(
+          action.payload[0].year2ChangePercent / 100
+        ).format("0.00%");
+        let year1ChangePercent = numeral(
+          action.payload[0].year1ChangePercent / 100
+        ).format("0.00%");
+        let ytdChangePercent = numeral(
+          action.payload[0].ytdChangePercent / 100
+        ).format("0.00%");
+        let month6ChangePercent = numeral(
+          action.payload[0].month6ChangePercent / 100
+        ).format("0.00%");
+        let month3ChangePercent = numeral(
+          action.payload[0].month3ChangePercent / 100
+        ).format("0.00%");
+        let month1ChangePercent = numeral(
+          action.payload[0].month1ChangePercent / 100
+        ).format("0.00%");
+        let day5ChangePercent = numeral(
+          action.payload[0].day5ChangePercent / 100
+        ).format("0.00%");
+        let day30ChangePercent = numeral(
+          action.payload[0].day30ChangePercent / 100
+        ).format("0.00%");
         return {
           ...state,
           marketCap,
@@ -324,12 +352,20 @@ export default (state = initialState, action) => {
         return [...state];
       } else {
         init();
-        let actualEPS = action.payload[0].earnings[0].actualEPS;
-        let consensusEPS = action.payload[0].earnings[0].consensusEPS;
-        let estimatedEPS = action.payload[0].earnings[0].estimatedEPS;
+        let actualEPS = numeral(action.payload[0].earnings[0].actualEPS).format(
+          "$0.00a"
+        );
+        let consensusEPS = numeral(
+          action.payload[0].earnings[0].consensusEPS
+        ).format("$0.00a");
+        let estimatedEPS = numeral(
+          action.payload[0].earnings[0].estimatedEPS
+        ).format("$0.00a");
         let announceTime = action.payload[0].earnings[0].announceTime;
         let numberOfEstimates = action.payload[0].earnings[0].numberOfEstimates;
-        let EPSSurpriseDollar = action.payload[0].earnings[0].EPSSurpriseDollar;
+        let EPSSurpriseDollar = numeral(
+          action.payload[0].earnings[0].EPSSurpriseDollar
+        ).format("$0.00a");
         let EPSReportDate = action.payload[0].earnings[0].EPSReportDate;
         let fiscalPeriod = action.payload[0].earnings[0].fiscalPeriod;
         let fiscalEndDate = action.payload[0].earnings[0].fiscalEndDate;

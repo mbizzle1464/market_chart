@@ -18,7 +18,24 @@ const App = () => (
       <Link to="/companies/msft">MSFT</Link>
       <Link to="/companies/aapl">AAPL</Link>
     </header> */}
-
+    <header>
+      <div classname="logo-container">
+        <img height="80px" src="/images/logo/logo.svg" />
+      </div>
+      <nav>
+        <ul className="nav-list">
+          <li classname="nav-list__item">
+            <a href="#">Search</a>
+          </li>
+          <li classname="nav-list__item">
+            <a href="/">Home</a>
+          </li>{" "}
+          <li classname="nav-list__item">
+            <a href="#">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main>
       <Route exact path="/" component={Home} />
       <Route exact path="/about-us" component={About} />
@@ -26,11 +43,11 @@ const App = () => (
         exact
         path="/companies/:companyId"
         component={() => (
-          <div>
+          <div className="main-wrapper">
             <CompanyDetails />
             <CompanyChart />
             <CompanyDescription />
-            <CompanyNews />
+            {/* <CompanyNews /> */}
             <CompanyFinancials />
             <CompanyStats />
             <CompanyEarnings />

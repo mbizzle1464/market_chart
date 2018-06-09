@@ -16,18 +16,21 @@ const Description = props => {
     console.log(props);
 
     return (
-      <div className="widget">
-        <div className="chart">
-          <Line
-            data={props.chart.data}
-            options={{
-              title: {
-                display: "This is the chart tile",
-                text: `${props.quote.symbol} Close Chart`,
-                fontSize: 25
-              }
-            }}
-          />
+      <div>
+        <div className="stripe" />
+        <div className="widget">
+          <div className="chart">
+            <Line
+              data={props.chart.data}
+              options={{
+                title: {
+                  display: "This is the chart tile",
+                  text: `${props.quote.symbol} Close Chart`,
+                  fontSize: 25
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
     );
@@ -50,4 +53,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Description);

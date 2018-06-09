@@ -12,60 +12,69 @@ const News = props => {
     return <p>no data</p>;
   } else {
     return (
-      <div className="widget news">
-        <h1>News</h1>
-        <div className="news-story-wrapper">
-          <div className="headline">
-            {" "}
-            <h2>{props.news[0].headline}</h2>
+      <div>
+        <div className="stripe" />
+        <div className="widget news">
+          <h1>News</h1>
+          <div className="news-story-wrapper">
+            <div className="headline">
+              {" "}
+              <h2>{props.news[0].headline}</h2>
+            </div>
+            <div className="datetime">
+              {props.news[0].datetime} - {props.news[0].source}
+            </div>
+            <div className="summary">
+              {props.news[0].summary}{" "}
+              <a href={props.news[0].url}>Read Article</a>
+            </div>
           </div>
-          <div className="datetime">
-            {props.news[0].datetime} - {props.news[0].source}
+          <hr />
+          <div className="news-story-wrapper">
+            <div className="headline">
+              {" "}
+              <h2>{props.news[1].headline}</h2>
+            </div>
+            <div className="datetime">
+              {props.news[1].datetime} - {props.news[1].source}
+            </div>
+            <div className="summary">
+              {props.news[1].summary}{" "}
+              <a href={props.news[1].url}>Read Article</a>
+            </div>
           </div>
-          <div className="summary">
-            {props.news[0].summary} <a href={props.news[0].url}>Read Article</a>
+          <hr />
+          <div className="news-story-wrapper">
+            <div className="headline">
+              {" "}
+              <h2>{props.news[2].headline}</h2>
+            </div>
+            <div className="datetime">
+              {props.news[2].datetime} - {props.news[2].source}
+            </div>
+            <div className="summary">
+              {props.news[2].summary}{" "}
+              <a href={props.news[2].url}>Read Article</a>
+            </div>
           </div>
-        </div>
-        <div className="news-story-wrapper">
-          <div className="headline">
-            {" "}
-            <h2>{props.news[1].headline}</h2>
+          <hr />
+          <div className="news-story-wrapper">
+            <div className="headline">
+              {" "}
+              <h2>{props.news[3].headline}</h2>
+            </div>
+            <div className="datetime">
+              {props.news[3].datetime} - {props.news[3].source}
+            </div>
+            <div className="summary">
+              {props.news[3].summary}
+              <a href={props.news[3].url}>Read Article</a>
+            </div>
           </div>
-          <div className="datetime">
-            {props.news[1].datetime} - {props.news[1].source}
-          </div>
-          <div className="summary">
-            {props.news[1].summary} <a href={props.news[1].url}>Read Article</a>
-          </div>
-        </div>
-        <div className="news-story-wrapper">
-          <div className="headline">
-            {" "}
-            <h2>{props.news[2].headline}</h2>
-          </div>
-          <div className="datetime">
-            {props.news[2].datetime} - {props.news[2].source}
-          </div>
-          <div className="summary">
-            {props.news[2].summary} <a href={props.news[2].url}>Read Article</a>
-          </div>
-        </div>
-        <div className="news-story-wrapper">
-          <div className="headline">
-            {" "}
-            <h2>{props.news[3].headline}</h2>
-          </div>
-          <div className="datetime">
-            {props.news[3].datetime} - {props.news[3].source}
-          </div>
-          <div className="summary">
-            {props.news[3].summary}
-            <a href={props.news[3].url}>Read Article</a>
-          </div>
-        </div>
 
-        {/* <h1>{props.news[0]}</h1>
+          {/* <h1>{props.news[0]}</h1>
         {console.log(JSON.stringify(props.news))} */}
+        </div>
       </div>
     );
   }
@@ -85,4 +94,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(News);

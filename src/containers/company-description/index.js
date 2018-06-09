@@ -12,25 +12,28 @@ const Description = props => {
     props.getIexData(currentCompany[2], "logo");
   }
   return (
-    <div className="widget">
-      <div className="company-description">
-        <div className="logo">
-          <img src={props.logo} alt="Company Logo" />{" "}
-        </div>
-        <div className="description">
-          <p className="summary">{props.description}</p>
-          <div>
-            <div className="ceo">
-              <span className="parameter-name">CEO </span>
-              {props.ceo}
-            </div>
-            <div className="sector">
-              <span className="parameter-name">Sector </span>
-              {props.sector}
-            </div>
-            <div className="industry">
-              <span className="parameter-name">Industry </span>
-              {props.industry}
+    <div>
+      <div className="stripe" />
+      <div className="widget">
+        <div className="company-description">
+          <div className="logo">
+            <img src={props.logo} alt="Company Logo" />{" "}
+          </div>
+          <div className="description">
+            <p className="summary">{props.description}</p>
+            <div>
+              <div className="ceo">
+                <span className="parameter-name">CEO </span>
+                {props.ceo}
+              </div>
+              <div className="sector">
+                <span className="parameter-name">Sector </span>
+                {props.sector}
+              </div>
+              <div className="industry">
+                <span className="parameter-name">Industry </span>
+                {props.industry}
+              </div>
             </div>
           </div>
         </div>
@@ -59,4 +62,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Description);

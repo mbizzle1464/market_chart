@@ -13,10 +13,13 @@ const Description = props => {
   return (
     // TODO: Refactor to a map
     // TODO: Add in company name and current price and price
-    <div className="widget">
-      <span class="parameter-name">Peers </span>
-      {props.peers[1]} {props.peers[0]} {props.peers[2]} {props.peers[3]}{" "}
-      {props.peers[4]} {props.peers[5]} {props.peers[6]}
+    <div>
+      <div className="stripe" />
+      <div className="widget">
+        <span class="parameter-name">Peers </span>
+        {props.peers[1]} {props.peers[0]} {props.peers[2]} {props.peers[3]}{" "}
+        {props.peers[4]} {props.peers[5]} {props.peers[6]}
+      </div>
     </div>
   );
 };
@@ -35,4 +38,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Description);

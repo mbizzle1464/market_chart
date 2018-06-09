@@ -11,34 +11,64 @@ const Description = props => {
     props.getIexData(currentCompany[2], "earnings");
   }
   return (
-    <div className="widget">
-      <h1>Earnings</h1>
-      <div className="key-value">
-        <div className="companyName">Earnings Per Share: {props.actualEPS}</div>
-        <div className="consensusEPS">consensusEPS: {props.consensusEPS}</div>
-        <div className="estimatedEPS">estimatedEPS: {props.estimatedEPS}</div>
-        <div className="announceTime">announceTime: {props.announceTime}</div>
-        <div className="numberOfEstimates">
-          numberOfEstimates: {props.numberOfEstimates}
+    <div>
+      <div className="stripe" />
+      <div className="widget">
+        <h1>Earnings</h1>
+        <div className="key-value">
+          <div className="companyName">
+            <div className="financial-label">Earnings Per Share</div>
+            <div className="financial-data">{props.actualEPS}</div>
+          </div>
+          <div className="consensusEPS">
+            <div className="financial-label">consensusEPS</div>
+            <div className="financial-data">{props.consensusEPS}</div>
+          </div>
+          <div className="estimatedEPS">
+            <div className="financial-label">estimatedEPS</div>
+            <div className="financial-data">{props.estimatedEPS}</div>
+          </div>
+          <div className="announceTime">
+            <div className="financial-label">announceTime</div>
+            <div className="financial-data">{props.announceTime}</div>
+          </div>
+          <div className="numberOfEstimates">
+            <div className="financial-label">numberOfEstimates </div>
+            <div className="financial-data">{props.numberOfEstimates}</div>
+          </div>
+          <div className="EPSSurpriseDollar">
+            <div className="financial-label">EPSSurpriseDollar </div>
+            <div className="financial-data">{props.EPSSurpriseDollar}</div>
+          </div>
+          <div className="EPSReportDate">
+            <div className="financial-label">EPSReportDate </div>
+            <div className="financial-data">{props.EPSReportDate}</div>
+          </div>
+          <div className="fiscalPeriod">
+            <div className="financial-label">fiscalPeriod</div>
+            <div className="financial-data">{props.fiscalPeriod}</div>
+          </div>
+          <div className="fiscalEndDate">
+            <div className="financial-label">fiscalEndDate </div>
+            <div className="financial-data">{props.fiscalEndDate}</div>
+          </div>
+          <div className="yearAgo">
+            <div className="financial-label">yearAgo</div>
+            <div className="financial-data">{props.yearAgo}</div>
+          </div>
+          <div className="yearAgoChangePercent">
+            <div className="financial-label">yearAgoChangePercent </div>
+            <div className="financial-data">{props.yearAgoChangePercent}</div>
+          </div>
+          <div className="estimatedChangePercent">
+            <div className="financial-label">estimatedChangePercent </div>
+            <div className="financial-data">{props.estimatedChangePercent}</div>
+          </div>
+          <div className="symbolId">
+            <div className="financial-label">symbolId</div>
+            <div className="financial-data">{props.symbolId}</div>
+          </div>
         </div>
-        <div className="EPSSurpriseDollar">
-          EPSSurpriseDollar: {props.EPSSurpriseDollar}
-        </div>
-        <div className="EPSReportDate">
-          EPSReportDate: {props.EPSReportDate}
-        </div>
-        <div className="fiscalPeriod">fiscalPeriod: {props.fiscalPeriod}</div>
-        <div className="fiscalEndDate">
-          fiscalEndDate: {props.fiscalEndDate}
-        </div>
-        <div className="yearAgo">yearAgo: {props.yearAgo}</div>
-        <div className="yearAgoChangePercent">
-          yearAgoChangePercent: {props.yearAgoChangePercent}
-        </div>
-        <div className="estimatedChangePercent">
-          estimatedChangePercent: {props.estimatedChangePercent}
-        </div>
-        <div className="symbolId">symbolId: {props.symbolId}</div>
       </div>
     </div>
   );
@@ -70,4 +100,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Description);
