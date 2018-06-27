@@ -2,6 +2,11 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 import Home from "../home";
 import About from "../about";
+import News from "../news";
+import Signin from "../signin";
+import Signup from "../signup";
+import Authenticator from "../authenticator";
+import Private from "../private"; 
 import CompanyDetails from "../company";
 import CompanyDescription from "../company-description";
 import CompanyFinancials from "../company-financials";
@@ -10,6 +15,9 @@ import CompanyStats from "../company-stats";
 import CompanyEarnings from "../company-earnings";
 import CompanyPeers from "../company-peers";
 import CompanyChart from "../company-chart";
+import config from '../../aws-exports'
+import Amplify from 'aws-amplify'
+Amplify.configure(config)
 
 const App = () => (
   <div>
@@ -39,6 +47,8 @@ const App = () => (
     <main>
       <Route exact path="/" component={Home} />
       <Route exact path="/about-us" component={About} />
+      <Route exact path="/" component={Authenticator} />
+      <Route exact path="/" component={News} />
       <Route
         exact
         path="/companies/:companyId"

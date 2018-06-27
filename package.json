@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-amplify": "^0.4.6",
+    "aws-amplify-react": "^0.1.52",
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
     "express": "^4.16.3",
@@ -20,11 +22,12 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "simple-cache-provider": "^0.7.0",
     "socket.io": "^2.1.0",
     "socket.io-client": "^2.1.0"
   },
   "scripts": {
-    "start": "NODE_ENV=development react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
