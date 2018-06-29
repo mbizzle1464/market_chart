@@ -1,0 +1,39 @@
+{
+  "name": "stock-markt",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001/",
+  "dependencies": {
+    "aws-amplify": "^0.4.6",
+    "aws-amplify-react": "^0.1.52",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "chart.js": "^2.7.2",
+    "express": "^4.16.3",
+    "history": "^4.7.2",
+    "moment": "^2.22.1",
+    "morgan": "^1.9.0",
+    "numeral": "^2.0.6",
+    "react": "^16.3.2",
+    "react-chartjs-2": "^2.7.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "simple-cache-provider": "^0.7.0",
+    "socket.io": "^2.1.0",
+    "socket.io-client": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+

@@ -1,25 +1,21 @@
-// Require Node Modules
-var express = require('express');
-var bodyParser = require('body-parser');
-var logger = require('morgan'); // for debugging
-var app = express();
-const PORT = process.env.PORT || 3000;
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Initialize Express for debugging & body parsing
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// Define middleware here
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// Serve up static assets (usually on heroku)
+/*// Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
+// Add routes, both API and view
+app.use(routes);
 
-// Serve Static Content
-app.use(express.static(process.cwd() + '/public'));
-
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+*/
 
 // Start the API server
 app.listen(PORT, function () {
