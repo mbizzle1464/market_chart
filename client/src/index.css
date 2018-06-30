@@ -550,3 +550,19 @@ nav {
   box-shadow: 2px 2px 10px black;
   z-index: 10000;
 }
+tr:nth-child(even) {
+  background: #ccc;
+}
+td {
+  text-align: center;
+}
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0;
+}
+th {
+  font-weight: 700;
+}
