@@ -1,0 +1,165 @@
+{
+	"name": "Market_Chart_2018",
+	"projectId": "22437a9f-3e42-4e7a-be63-25a26a5ea596",
+	"region": "us-east-2",
+	"state": "NORMAL",
+	"createdDate": "2018-06-27T00:56:47.984Z",
+	"lastUpdatedDate": "2018-06-27T01:00:38.886Z",
+	"consoleUrl": "https://console.aws.amazon.com/mobilehub/home#/22437a9f-3e42-4e7a-be63-25a26a5ea596/build",
+	"resources": [
+		{
+			"type": "AWS::Pinpoint::AnalyticsApplication",
+			"name": "marketchart2018_MobileHub",
+			"arn": "070c6df1fbd546ea910fef6281ff4577",
+			"feature": "analytics",
+			"attributes": {
+				"lastUpdateRequestID": "a876fba5-4a20-4c1f-8983-9627150935d1"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "marketchart_mobileanalytics_MOBILEHUB_572664129",
+			"arn": null,
+			"feature": "analytics",
+			"attributes": {
+				"authType": "authenticated",
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"role": "marketchart_auth_MOBILEHUB_572664129"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "marketchart_mobileanalytics_MOBILEHUB_572664129",
+			"arn": null,
+			"feature": "analytics",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"role": "marketchart_unauth_MOBILEHUB_572664129"
+			}
+		},
+		{
+			"type": "AWS::Cognito::IdentityPool",
+			"name": "marketchart_MOBILEHUB_572664129",
+			"arn": "us-east-2:061f7b4b-149c-4c39-a4af-3c705875d4d6",
+			"feature": "user-signin",
+			"attributes": {
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"poolid": "us-east-2:061f7b4b-149c-4c39-a4af-3c705875d4d6",
+				"roleARNs": "arn:aws:iam::243933303218:role/marketchart_auth_MOBILEHUB_572664129,arn:aws:iam::243933303218:role/marketchart_unauth_MOBILEHUB_572664129"
+			}
+		},
+		{
+			"type": "AWS::IAM::Role",
+			"name": "marketchart_smsverification_MOBILEHUB_572664129",
+			"arn": "arn:aws:iam::243933303218:role/service-role/marketchart_smsverification_MOBILEHUB_572664129",
+			"feature": "user-signin",
+			"attributes": {
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"user-pools-role-key": "user-pools-execution-role"
+			}
+		},
+		{
+			"type": "AWS::Cognito::UserPool",
+			"name": "marketchart_userpool_MOBILEHUB_572664129",
+			"arn": "us-east-2_dfJyCDtRY",
+			"feature": "user-signin",
+			"attributes": {
+				"alias-attributes": "[\"email\",\"phone_number\"]",
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"mfa-configuration": "ON",
+				"password-policy": "{\"minimumLength\":8,\"requireUppercase\":true,\"requireLowercase\":true,\"requireNumbers\":true,\"requireSymbols\":true}",
+				"region": "us-east-2",
+				"user-pools-client-id": "...redacted_-652051851...",
+				"user-pools-client-secret": "...redacted_-1591357034...",
+				"user-pools-id": "us-east-2_dfJyCDtRY",
+				"user-pools-web-client-id": "7mkgr1hivpkhufs6pni6m74ciu"
+			}
+		},
+		{
+			"type": "AWS::IAM::Role",
+			"name": "marketchart_auth_MOBILEHUB_572664129",
+			"arn": "arn:aws:iam::243933303218:role/marketchart_auth_MOBILEHUB_572664129",
+			"feature": "user-signin",
+			"attributes": {
+				"authType": "authenticated",
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7"
+			}
+		},
+		{
+			"type": "AWS::IAM::Role",
+			"name": "marketchart_unauth_MOBILEHUB_572664129",
+			"arn": "arn:aws:iam::243933303218:role/marketchart_unauth_MOBILEHUB_572664129",
+			"feature": "user-signin",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "a876fba5-4a20-4c1f-8983-9627150935d1"
+			}
+		},
+		{
+			"type": "AWS::S3::Bucket",
+			"name": "marketchart-hosting-mobilehub-572664129",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"lastUpdateRequestID": "a876fba5-4a20-4c1f-8983-9627150935d1",
+				"region": "us-east-2",
+				"s3-bucket-console-url": "https://s3.console.aws.amazon.com/s3/buckets/marketchart-hosting-mobilehub-572664129",
+				"s3-bucket-website-url": "https://s3.amazonaws.com/marketchart-hosting-mobilehub-572664129"
+			}
+		},
+		{
+			"type": "AWS::CloudFront::Distribution",
+			"name": "d3k64h9tkkondf.cloudfront.net",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"id": "E1EHTVALFI5A1W",
+				"lastUpdateRequestID": "a876fba5-4a20-4c1f-8983-9627150935d1"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "marketchart_hosting_MOBILEHUB_572664129",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"authType": "authenticated",
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"role": "marketchart_auth_MOBILEHUB_572664129"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "marketchart_hosting_MOBILEHUB_572664129",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "b364585a-a7b0-4f1a-bafd-dae47f9461d7",
+				"role": "marketchart_unauth_MOBILEHUB_572664129"
+			}
+		},
+		{
+			"type": "AWS::S3::Bucket",
+			"name": "marketchart-deployments-mobilehub-572664129",
+			"arn": null,
+			"feature": "common",
+			"attributes": {
+				"region": "us-east-2",
+				"s3-bucket-console-url": "https://s3.console.aws.amazon.com/s3/buckets/marketchart-deployments-mobilehub-572664129"
+			}
+		},
+		{
+			"type": "AWS::CloudFormation::Stack",
+			"name": "Development",
+			"arn": null,
+			"feature": "cloud-api",
+			"attributes": {
+				"primary": "true",
+				"region": "us-east-2",
+				"stateSummary": "NOT_YET_DEPLOYED"
+			}
+		}
+	]
+}

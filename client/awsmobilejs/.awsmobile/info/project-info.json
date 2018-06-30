@@ -1,0 +1,19 @@
+{
+	"ProjectName": "market_chart",
+	"ProjectPath": "C:\\Users\\mbizzle\\code\\github-repositories\\market_chart",
+	"InitializationTime": "2018-06-26-19-59-28",
+	"LastConfigurationTime": "2018-06-26-19-56-04",
+	"LastNPMInstallTime": "",
+	"FrontendLastBuildTime": "",
+	"LastPublishTime": "",
+	"BackendLastSyncTime": "2018-06-26-20-00-15",
+	"BackendLastBuildTime": "2018-06-26-19-59-54",
+	"BackendLastPushTime": "2018-06-26-20-00-11",
+	"BackendProjectID": "22437a9f-3e42-4e7a-be63-25a26a5ea596",
+	"BackendProjectName": "Market_Chart_2018",
+	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/22437a9f-3e42-4e7a-be63-25a26a5ea596/build",
+	"BackendProjectCreationTime": "2018-06-27T00:56:47.984Z",
+	"BackendProjectLastUpdatedTime": "2018-06-27T01:00:38.886Z",
+	"Framework": "react",
+	"BackendLastSyncToDevTime": "2018-06-26-20-00-15"
+}
