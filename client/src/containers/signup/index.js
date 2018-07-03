@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-
+import { css } from 'glamor'
 import { Auth } from 'aws-amplify'
 
 class SignUp extends React.Component {
@@ -38,29 +38,33 @@ class SignUp extends React.Component {
   render() {
     const { showConfirmation } = this.state
     return (
-      <div>
+      <div {...css(styles.container)}>
         {
           !showConfirmation && (
-            <div>
+            <div {...css(styles.container)}>
               <input
+                {...css(styles.input)}
                 placeholder='Username'
                 onChange={evt => this.onChange('username', evt.target.value)}
               />
               <input
+                {...css(styles.input)}
                 placeholder='Password'
                 type='password'
                 onChange={evt => this.onChange('password', evt.target.value)}
               />
               <input
-                placeholder='Email'
+                {...css(styles.input)}
+                placeholder='Email@email.com'
                 onChange={evt => this.onChange('email', evt.target.value)}
               />
               <input
-                placeholder='Phone Number'
+                {...css(styles.input)}
+                placeholder='+15555555555'
                 onChange={evt => this.onChange('phone_number', evt.target.value)}
               />
-              <div onClick={this.signUp}>
-              <p>Enter</p> 
+              <div {...css(styles.button)} onClick={this.signUp}>
+                <p {...css(styles.buttonText)}>Sign Up</p>
               </div>
             </div>
           )
@@ -70,10 +74,11 @@ class SignUp extends React.Component {
             <div>
               <input
                 onChange={evt => this.onChange('authCode', evt.target.value)}
+                {...css(styles.input)}
                 placeholder='Confirmation Code'
               />
-              <div onClick={this.confirmSignUp}>
-                <p>Confirm Sign Up</p>
+              <div {...css(styles.button)} onClick={this.confirmSignUp}>
+                <p {...css(styles.buttonText)}>Confirm Sign Up</p>
               </div>
             </div>
           )
@@ -81,6 +86,41 @@ class SignUp extends React.Component {
       </div>
     )
   }
+}
+
+const styles = {
+  button: {
+    padding: '10px 60px',
+    backgroundColor: '#ddd',
+    cursor: 'pointer',
+    borderRadius: '3px',
+    ':hover': {
+      backgroundColor: '#ededed'
+    }
+  },
+  buttonText: {
+    margin: 0
+  },
+  container: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    paddingTop: '15px'
+  },
+  input: {
+    height: 40,
+    marginBottom: '10px',
+    border: 'none',
+    outline: 'none',
+    borderBottom: '2px solid #000000',
+    borderRadius: '5px',
+    fontSize: '16px',
+    '::placeholder': {
+      color: 'rgba(0, 0, 0, .3)'
+    }
+  },
 }
 
 export default withRouter(SignUp)

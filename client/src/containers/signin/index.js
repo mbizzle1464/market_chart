@@ -1,4 +1,5 @@
 import React from 'react'
+import { css } from 'glamor'
 import { Auth } from 'aws-amplify'
 
 import { withRouter } from 'react-router-dom'
@@ -31,23 +32,25 @@ class SignIn extends React.Component {
       })
       .catch(err => alert('There was an issue signing in because ' + err.message))
   }
-  render() {
+render() {
     return (
-      <div>
+      <div {...css(styles.container)}>
         {
           !this.state.showConfirmation && (
-            <div>
+            <div {...css(styles.container)}>
               <input
                 onChange={evt => this.onChange('username', evt.target.value)}
+                {...css(styles.input)}
                 placeholder='username'
               />
               <input
                 type='password'
                 onChange={evt => this.onChange('password', evt.target.value)}
+                {...css(styles.input)}
                 placeholder='password'
               />
-              <div onClick={this.signIn}> 
-              <p>Enter</p>               
+              <div {...css(styles.button)} onClick={this.signIn}>
+                <p {...css(styles.buttonText)}>Enter</p>
               </div>
             </div>
           )
@@ -57,11 +60,11 @@ class SignIn extends React.Component {
             <div>
               <input
                 onChange={evt => this.onChange('authCode', evt.target.value)}
-                
+                {...css(styles.input)}
                 placeholder='Confirmation Code'
               />
-              <div onClick={this.confirmSignIn.bind(this)}>
-                <p>Confirm Sign In</p>
+              <div {...css(styles.button)} onClick={this.confirmSignIn.bind(this)}>
+                <p {...css(styles.buttonText)}>Confirm Sign In</p>
               </div>
             </div>
           )
@@ -71,5 +74,39 @@ class SignIn extends React.Component {
   }
 }
 
+const styles = {
+  button: {
+    padding: '10px 60px',
+    backgroundColor: '#ddd',
+    cursor: 'pointer',
+    borderRadius: '3px',
+    ':hover': {
+      backgroundColor: '#ededed'
+    }
+  },
+  buttonText: {
+    margin: 0
+  },
+  input: {
+    height: 40,
+    marginBottom: '10px',
+    border: 'none',
+    outline: 'none',
+    borderBottom: '2px solid #000000',
+    borderRadius: '5px',
+    fontSize: '16px',
+    '::placeholder': {
+      color: 'rgba(0, 0, 0, .3)'
+    }
+  },
+  container: {
+    flex: 1,
+    paddingTop: '15px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
+  }
+}
 
 export default withRouter(SignIn)
