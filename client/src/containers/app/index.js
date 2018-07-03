@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Router, IndexRoute, Link } from "react-router-dom";
 import Home from "../home";
 import About from "../about";
 import News from "../news";
@@ -18,6 +18,13 @@ import CompanyChart from "../company-chart";
 import MyStocks from "../my-stocks";
 import config from "../../aws-exports";
 import Amplify from "aws-amplify";
+import Footer from "../footer";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSearch);
+
 Amplify.configure(config);
 
 const App = () => (
@@ -37,7 +44,7 @@ const App = () => (
             <a href="/">Home</a>
           </li>
           <li className="nav-list__item">
-            <a href="/about-us">About</a>
+            <a href="/about">About</a>
           </li>
           <li className="nav-list__item">
             <a href="/mystocks">Portfolio</a>
@@ -52,6 +59,7 @@ const App = () => (
       </nav>
     </header>
     <main>
+      <Route exact path="/about" component={About} />
       <Route
         exact
         path="/companies/:companyId"
@@ -68,8 +76,17 @@ const App = () => (
           </div>
         )}
       />
-      <Home />
-       <Private />
+      <Route
+        exact
+        path="/"
+        component={() => (
+          <div>
+            <Home />
+            <Private />
+          </div>
+        )}
+      />
+      <Footer />
     </main>
   </div>
 );

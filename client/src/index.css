@@ -567,3 +567,20 @@ td {
 th {
   font-weight: 700;
 }
+.stock-search-button {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #ff9b04;
+  border: 1px solid #ff9b04 !important;
+  color: white;
+  border: none;
+}
+.stock-search {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid rgb(238, 238, 238);
+}

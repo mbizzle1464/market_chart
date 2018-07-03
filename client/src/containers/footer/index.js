@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => (
   <div className="widget">
-    <h1>About</h1>
+    <h1>Footer Goes Here</h1>
     <div className="search-container">
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate non

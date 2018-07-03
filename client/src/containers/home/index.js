@@ -6,24 +6,25 @@ import { connect } from "react-redux";
 import { loadCompanyPage } from "../../modules/Home.js";
 import { getIexData } from "../../modules/PullStocks.js";
 import Authenticator from "../authenticator";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = props => {
   return (
     <div className="widget">
-      <h1>Home Page</h1>
+      <h1>Search Companies</h1>
       <div className="search-container">
         <input
           type="text"
           className="stock-search"
           id="stock-search"
-          defaultValue="input something"
+          placeholder="MSFT"
         />
         <button
           className="stock-search-button"
           id="stock-search-button"
           onClick={props.changePage}
         >
-          Search
+          <FontAwesomeIcon icon="search" />
         </button>
       </div>
     </div>
@@ -45,4 +46,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
