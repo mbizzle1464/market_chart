@@ -28,29 +28,30 @@ const App = () => (
       <Link to="/companies/aapl">AAPL</Link>
     </header> */}
     <header>
-      <div classname="logo-container">
+      <div className="logo-container">
         <img height="80px" src="/images/logo/logo.svg" />
       </div>
       <nav>
         <ul className="nav-list">
-          <li classname="nav-list__item">
-            <a href="#">Search</a>
-          </li>
-          <li classname="nav-list__item">
+          <li className="nav-list__item">
             <a href="/">Home</a>
           </li>{" "}
-          <li classname="nav-list__item">
-            <a href="#">About</a>
+          <li className="nav-list__item">
+            <a href="/about-us">About</a>
+          </li>
+          <li className="nav-list__item">
+            <a href="/mystocks">Portfolio</a>
+          </li>
+          <li className="nav-list__item">
+            <a href="/news">Stock News</a>
+          </li>
+          <li className="nav-list__item">
+            <a href="/signout">Sign Out</a>
           </li>
         </ul>
       </nav>
     </header>
     <main>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/about-us" component={About} />
-      <Route exact path="/" component={Authenticator} />
-      <Route exact path="/" component={News} />
-      <Route exact path="/mystocks" component={MyStocks} />
       <Route
         exact
         path="/companies/:companyId"
@@ -67,6 +68,8 @@ const App = () => (
           </div>
         )}
       />
+      <Home />
+       <Private />
     </main>
   </div>
 );

@@ -7,9 +7,14 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom'
 import { Auth } from 'aws-amplify'
-
 import Authenticator from '../authenticator'
 import  Home from '../home'
+import MyStocks from "../my-stocks";
+import About from "../about";
+import News from "../news";
+import Signout from "../signout";
+
+
 
 class PrivateRoute extends React.Component {
   state = {
@@ -64,8 +69,11 @@ PrivateRoute = withRouter(PrivateRoute)
 const Routes = () => (
   <Router>
     <Switch>
-      <Route path='/auth' component={Authenticator} />
-      <PrivateRoute path='/' component={Home} />
+      <Route exact path="/about-us" component={About} />
+      <Route exact path="/auth" component={Authenticator} />
+      <PrivateRoute path='/mystocks' component={MyStocks} />
+      <PrivateRoute path='/signout' component={Signout} />
+      <Route exact path="/News" component={News} />
     </Switch>
   </Router>
 )

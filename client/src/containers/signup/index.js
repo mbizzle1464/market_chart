@@ -28,12 +28,12 @@ class SignUp extends React.Component {
       }
     })
     .then(() => this.setState({ showConfirmation: true }))
-    .catch(err => console.log('error signing up: ', err))
+    .catch(err => alert('There was an issue signing up because ' + err.message))
   }
   confirmSignUp = () => {
     Auth.confirmSignUp(this.state.username, this.state.authCode)
-    .then(() => this.props.history.push('/'))
-    .catch(err => console.log('error confirming signing up: ', err))
+    .then(() => this.props.history.push('/mystocks'))
+    .catch(err => alert('There was an issue signing up because ' + err.message))
   }
   render() {
     const { showConfirmation } = this.state

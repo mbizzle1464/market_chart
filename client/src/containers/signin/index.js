@@ -21,15 +21,15 @@ class SignIn extends React.Component {
       .then(user => {
         this.setState({ user, showConfirmation: true })
       })
-      .catch(err => console.log('error signing in...: ', err))
+      .catch(err => alert('There was an issue signing in because ' + err.message))
   }
   confirmSignIn = () => {
     const { history } = this.props
     Auth.confirmSignIn(this.state.user, this.state.authCode, this.state.user.challengeName)
       .then(user => {
-        history.push('/')
+        history.push('/mystocks')
       })
-      .catch(err => console.log('error confirming signing in...: ', err))
+      .catch(err => alert('There was an issue signing in because ' + err.message))
   }
   render() {
     return (

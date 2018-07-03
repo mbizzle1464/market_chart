@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 // import { getData } from "../../modules/PullStocks";
 import { loadCompanyPage } from "../../modules/Home.js";
 import { getIexData } from "../../modules/PullStocks.js";
+import Authenticator from "../authenticator";
 
 const Home = props => {
   return (
