@@ -35,7 +35,7 @@ const App = () => (
         <ul className="nav-list">
           <li className="nav-list__item">
             <a href="/">Home</a>
-          </li>{" "}
+          </li>
           <li className="nav-list__item">
             <a href="/about-us">About</a>
           </li>

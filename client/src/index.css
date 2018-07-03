@@ -435,6 +435,7 @@ h3 {
 .key-value {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
 }
 .widget > h1 {
   margin-bottom: 20px;
@@ -496,7 +497,7 @@ header {
   display: grid;
   justify-content: end;
   align-items: center;
-  grid-template-columns: max-content max-content max-content max-content;
+  grid-template-columns: max-content max-content max-content max-content max-content;
 }
 .nav-list a:link,
 .nav-list a:visited {
