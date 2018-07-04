@@ -1,5 +1,8 @@
 // *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db this are dummy routes and can be edited to match the final routes we will be using for the final project if we need any more database functionalities please let me know so I can add them or modify them
+// api-routes.js - this file offers a set of routes for displaying and saving data
+// to the db this are dummy routes and can be edited to match the final routes we
+// will be using for the final project if we need any more database
+// functionalities please let me know so I can add them or modify them
 // *********************************************************************************
 
 // Dependencies
@@ -23,7 +26,7 @@ module.exports = function(app) {
     });
 
     // Get Specific User By 
-    app.get("/api/all", function(req, res){
+    app.get("/api/user", function(req, res){
         Users.findAll({
             where: {
                 username: req.params.username
@@ -39,7 +42,9 @@ module.exports = function(app) {
             where: {
                 user_id: req.params.user_id
             }
-        });
+        }).then(function(results) {
+            res.json(results);
+          });
     });
     // Get All User Orders
     app.get("/api/Orders", function(req, res){
@@ -47,7 +52,9 @@ module.exports = function(app) {
             where: {
                 user_id: req.params.user_id
             }
-        });
+        }).then(function(results) {
+            res.json(results);
+          });
     });
     // Get Specific Orders Based On Date
     app.get("/api/Orders/:date", function(req, res){
@@ -55,7 +62,9 @@ module.exports = function(app) {
             where: {
                 order_date : req.params.order_date
             }
-        });
+        }).then(function(results) {
+            res.json(results);
+          });
     });
 
     // Get Specific Orders Based on Stock Name
@@ -64,7 +73,9 @@ module.exports = function(app) {
             where: {
                 order_stock : req.params.order_stock
             }
-        });
+        }).then(function(results) {
+            res.json(results);
+          });
     });
 
     // Get Specific Orders Bases on Order Type
@@ -73,7 +84,9 @@ module.exports = function(app) {
             where: {
                 order_type: req.params.order_type
             }
-        });
+        }).then(function(results) {
+            res.json(results);
+          });
     });
 
     // Get User Watchlist
@@ -82,7 +95,9 @@ module.exports = function(app) {
             where: {
                 user_id: req.params.user_id
             }
-        })
+        }).then(function(results) {
+            res.json(results);
+          });
     });
 
     // Add a user
@@ -90,15 +105,15 @@ module.exports = function(app) {
         console.log("User Data:");
         console.log(req.body);
         Users.create({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            bank_name: req.body.bank_name,
-            account_type: req.body.account_type,
-            account_number: req.body.account_number,
-            routing_number: req.body.routing_number,
+            first_name: /*req.body.first_name*/"Edgar",
+            last_name: /*req.body.last_name*/"Sandoval",
+            username: /*req.body.username*/"ese1307",
+            email: /*req.body.email*/"ese1307@gmail.com",
+            password: /*req.body.password*/"testing",
+            bank_name: /*req.body.bank_name*/"Chase",
+            account_type: /*req.body.account_type*/"Checking",
+            account_number: /*req.body.account_number */1223134,
+            routing_number: /*req.body.routing_number*/10001234,
         });
     });
     // Add stock to watchlist
