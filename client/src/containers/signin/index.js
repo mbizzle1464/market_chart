@@ -32,6 +32,7 @@ class SignIn extends React.Component {
       })
       .catch(err => alert('There was an issue signing in because ' + err.message))
   }
+  
 render() {
     return (
       <div {...css(styles.container)}>

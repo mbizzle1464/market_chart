@@ -3,6 +3,7 @@ import { css } from 'glamor'
 import { withRouter } from 'react-router-dom'
 import SignIn from '../signin'
 import SignUp from '../signup'
+import { Auth } from 'aws-amplify'
 
 class Authenticator extends React.Component {
   state = {
@@ -33,7 +34,7 @@ class Authenticator extends React.Component {
             onClick={() => this.switchState(false)}
             {...css(styles.button, !showSignIn && styles.underline)}
           >Sign Up</p>
-        </div>
+        </div>      
       </div>
     )
   }

@@ -66,16 +66,4 @@ class PrivateRoute extends React.Component {
 
 PrivateRoute = withRouter(PrivateRoute)
 
-const Routes = () => (
-  <Router>
-    <Switch>
-      <Route exact path="/about-us" component={About} />
-      <Route exact path="/auth" component={Authenticator} />
-      <PrivateRoute path='/mystocks' component={MyStocks} />
-      <PrivateRoute path='/signout' component={Signout} />
-      <Route exact path="/News" component={News} />
-    </Switch>
-  </Router>
-)
-
-export default Routes
+export default PrivateRoute
