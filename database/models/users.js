@@ -64,7 +64,7 @@ var Users = sequelize.define("users", {
         validate: {
             len: [1,3]
         },
-        defaultValue: no,
+        defaultValue: 'no',
     },
 });
 
