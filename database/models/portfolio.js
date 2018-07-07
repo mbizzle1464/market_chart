@@ -1,9 +1,9 @@
 // STANDARD SEQUELIZE LIBRARY
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 // CONNECTION TO DATABASE
-var sequelize = require("../config/connection");
+const sequelize = require("../config/connection");
 
-var Portfolio = sequelize.define("portfolio", {
+const Portfolio = sequelize.define("portfolio", {
 
     portfolio_id: {
         type: Sequelize.INTEGER,

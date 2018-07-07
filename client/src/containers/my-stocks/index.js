@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getIexData } from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
 import { Auth } from 'aws-amplify'
+import News from "../news"
 
 // I wanted to see if this functionality of Private Route works and it did! This is why the other items are commented out. 
 
@@ -27,7 +28,14 @@ class MyStock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome {this.state.username}</h1>
+      <div className="widget">
+      <h1>Welcome {this.state.username}</h1>
+        <div className="search-container">
+        </div>
+      </div>
+        <div>
+          <News />
+        </div>
       </div>
     )
   }

@@ -1,9 +1,9 @@
 // STANDARD SEQUELIZE LIBRARY
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 // CONNECTION TO DATABASE
-var sequelize = require("../config/connection");
+const sequelize = require("../config/connection");
 
-var Watchlist = sequelize.define("watchlist", {
+const Watchlist = sequelize.define("watchlist", {
 
     id: {
         type: Sequelize.INTEGER,

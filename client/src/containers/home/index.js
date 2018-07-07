@@ -6,10 +6,12 @@ import { connect } from "react-redux";
 import { loadCompanyPage } from "../../modules/Home.js";
 import { getIexData } from "../../modules/PullStocks.js";
 import Authenticator from "../authenticator";
+import News from "../news";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = props => {
   return (
+    <React.Fragment>
     <div className="widget">
       <h1>Search Companies</h1>
       <div className="search-container">
@@ -28,6 +30,10 @@ const Home = props => {
         </button>
       </div>
     </div>
+    <div>
+      <News />
+    </div>
+    </React.Fragment>
   );
 };
 

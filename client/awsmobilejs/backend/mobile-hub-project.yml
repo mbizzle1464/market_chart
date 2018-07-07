@@ -27,5 +27,9 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
-name: Market-Test-1
+  user-files: !com.amazonaws.mobilehub.v0.UserFiles 
+    attributes:
+      enabled: true
+      wildcard-cors-policy: true
+name: Market-Chart-1
 region: us-east-2

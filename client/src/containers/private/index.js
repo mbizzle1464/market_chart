@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react';
 import {
-  withRouter,
-  Switch,
-  Route,
-  Redirect,
-  BrowserRouter as Router
+    withRouter,
+    Switch,
+    Route,
+    Redirect,
+    BrowserRouter as Router
 } from 'react-router-dom'
-import { Auth } from 'aws-amplify'
-import Authenticator from '../authenticator'
-import  Home from '../home'
-import MyStocks from "../my-stocks";
-import About from "../about";
-import News from "../news";
-import Signout from "../signout";
+import { Container } from 'semantic-ui-react';
 
+import { Auth } from 'aws-amplify';
 
+const UserInfo = (props) => {
+    return (
+        <div>{JSON.stringify(props.user)}</div>
+    )
+}
 
 class PrivateRoute extends React.Component {
   state = {
@@ -66,16 +66,4 @@ class PrivateRoute extends React.Component {
 
 PrivateRoute = withRouter(PrivateRoute)
 
-const Routes = () => (
-  <Router>
-    <Switch>
-      <Route exact path="/about-us" component={About} />
-      <Route exact path="/auth" component={Authenticator} />
-      <PrivateRoute path='/mystocks' component={MyStocks} />
-      <PrivateRoute path='/signout' component={Signout} />
-      <Route exact path="/News" component={News} />
-    </Switch>
-  </Router>
-)
-
-export default Routes
+export default PrivateRoute

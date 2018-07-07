@@ -1,58 +1,26 @@
-import React from 'react'
-import { css } from 'glamor'
-import { withRouter } from 'react-router-dom'
-import SignIn from '../signin'
-import SignUp from '../signup'
+import React, { Component } from "react";
+import { Authenticator } from "aws-amplify-react";
+import { Bootstrap } from 'a-theme-react';
+import LoginForm from "../loginform";
+import RegisterForm from "../registerform";
+import ConfirmRegisterForm from "../confirmregisterform";
+import VerifyContactForm from "../verifycontactform";
+import ForgotPasswordForm from "../forgotpasswordform";
+import AfterLoginForm from "../afterloginform";
 
-class Authenticator extends React.Component {
-  state = {
-    showSignIn: true
-  }
-  switchState = (showSignIn) => {
-    this.setState({
-      showSignIn
-    })
-  }
+
+export default class Login extends Component {
   render() {
-    const { showSignIn } = this.state
     return (
-      <div>
-        {
-          showSignIn ? (
-            <SignIn />
-          ) : (
-            <SignUp />
-          )
-        }
-        <div {...css(styles.buttonContainer)}>
-          <p
-            {...css(styles.button, showSignIn && styles.underline)}
-            onClick={() => this.switchState(true)}
-          >Sign In</p>
-          <p
-            onClick={() => this.switchState(false)}
-            {...css(styles.button, !showSignIn && styles.underline)}
-          >Sign Up</p>
-        </div>
-      </div>
-    )
+      <Authenticator theme={Bootstrap} hideDefault>
+        <LoginForm />
+        <RegisterForm />
+        <ConfirmRegisterForm />
+        <VerifyContactForm />
+        <ForgotPasswordForm />
+        <AfterLoginForm />
+      </Authenticator>
+    );
   }
 }
 
-export default withRouter(Authenticator)
-
-const styles = {
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  button: {
-    width: '100px',
-    paddingBottom: '10px',
-    cursor: 'pointer',
-    borderBottom: '2px solid transparent'
-  },
-  underline: {
-    borderBottomColor: '#ddd'
-  }
-}

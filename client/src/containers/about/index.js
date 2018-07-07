@@ -1,7 +1,13 @@
 import React from "react";
 
-export default () => (
-  <div className="widget">
+class About extends React.Component {
+  state = {
+    username: '',
+    user: {}
+  }
+  render() {
+    return (
+       <div className="widget">
     <h1>About</h1>
     <div className="search-container">
       <p>
@@ -12,4 +18,8 @@ export default () => (
       </p>
     </div>
   </div>
-);
+    )
+  }
+}
+
+export default About

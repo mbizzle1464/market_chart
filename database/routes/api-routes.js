@@ -19,18 +19,8 @@ var Watchlist = require("../models/watchlist.js");
 
 module.exports = function(app) {
 
-    // Get All Users
-    app.get("/api/all", function(req, res){
-        Users.findAll({
-
-        }).then(function(results){
-            res.json(results);
-            console.log("Book Data:");
-        })
-    });
-
-    // Get Specific User By 
-    app.get("/api/user", function(req, res){
+    // Get Specific User By username
+    app.get("/api/:user", function(req, res){
         Users.findAll({
             where: {
                 username: req.params.username
@@ -42,7 +32,7 @@ module.exports = function(app) {
     });
 
     // Get User Portolio
-    app.get("/:user/portfolio", function(req, res){
+    app.get("/api/user/portfolio", function(req, res){
         Portfolio.findAll({
             where: {
                 user_id: req.params.user_id
@@ -52,7 +42,7 @@ module.exports = function(app) {
           });
     });
     // Get All User Orders
-    app.get("/api/Orders", function(req, res){
+    app.get("/api/user/rders", function(req, res){
         Orders.findAll({
             where: {
                 user_id: req.params.user_id
@@ -62,10 +52,10 @@ module.exports = function(app) {
           });
     });
     // Get Specific Orders Based On Date
-    app.get("/api/Orders/:date", function(req, res){
+    app.get("/api/orders/:date", function(req, res){
         Orders.findAll({
             where: {
-                order_date : req.params.order_date
+                createdAt : req.params.createdAt
             }
         }).then(function(results) {
             res.json(results);
@@ -73,7 +63,7 @@ module.exports = function(app) {
     });
 
     // Get Specific Orders Based on Stock Name
-    app.get("/api/Orders/:stock", function(req, res){
+    app.get("/api/orders/:stock", function(req, res){
         Orders.findAll({
             where: {
                 order_stock : req.params.order_stock
@@ -84,7 +74,7 @@ module.exports = function(app) {
     });
 
     // Get Specific Orders Bases on Order Type
-    app.get("/api/Orders/:type", function(req, res){
+    app.get("/api/orders/:type", function(req, res){
         Orders.findAll({
             where: {
                 order_type: req.params.order_type
@@ -105,28 +95,27 @@ module.exports = function(app) {
           });
     });
 
-    // Add a user Chsnge to POST
+    // Add a user 
     app.post("api/register", function(req, res){
         console.log("User Data:");
         console.log(req.body);
         Users.create({
-            first_name: /*req.body.first_name*/"Edgar",
-            last_name: /*req.body.last_name*/"Sandoval",
-            username: /*req.body.username*/"ese1307",
-            email: /*req.body.email*/"ese1307@gmail.com",
-            password: /*req.body.password*/"testing",
-            bank_name: /*req.body.bank_name*/"Chase",
-            account_type: /*req.body.account_type*/"Checking",
-            account_number: /*req.body.account_number */1223134,
-            routing_number: /*req.body.routing_number*/10001234,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            bank_name: req.body.bank_name,
+            account_type: req.body.account_type,
+            account_number: req.body.account_number ,
+            routing_number: req.body.routing_number,
         });
     });
     // Add stock to watchlist
-    app.post("api/watchlist", function(req, res){
+    app.post("api/watchlist/", function(req, res){
         console.log("Watchlist Data:");
         console.log(req.body);
         Watchlist.create({
-            id: req.body.id,
             user_id: req.body.user_id,
             watch_stock: req.body.watch_stock
         });
@@ -136,7 +125,6 @@ module.exports = function(app) {
         console.log("User Data: ");
         console.log(req.body);
         Portfolio.create({
-            portfolio_id: req.body.portfolio_id,
             user_id: req.body.user_id,
             portfolio_value: req.body.portfolio_value,
             buying_power: req.body.buying_power,
@@ -146,29 +134,28 @@ module.exports = function(app) {
 
     });
     // Add order to Order list
-    app.post("api/addOrder", function(req, res){
+    app.post("api/new/order", function(req, res){
         console.log("User Data: ");
         console.log(req.body);
         Orders.create({
-            order_id: req.body.first_name ,
-            customer_id: req.body.last_name,
-            portfolio_id: req.body.username,
-            order_date: req.body.email,
-            order_shares: req.body.password,
-            order_amount: req.body.bank_name,
-            stock_name: req.body.account_type,
+            customer_id: req.body.customer_id,
+            portfolio_id: req.body.portfolio_id,
+            order_type: req.body.order_type,
+            order_shares: req.body.order_shares,
+            order_amount: req.body.order_amount,
+            stock_name: req.body.stock_name,
         });
     });
     // DELETE route for deleting items from watchlist
-    app.post("/api/posts/:id", function(req, res) {
+    app.post("/api/delete", function(req, res) {
         Watchlist.destroy({
             where: {
-            id: req.params.id
+            watch_stock: req.params.watch_stock
             }
         })
     });
     // DELETE route for deleting stocks from portfolio
-    app.post("/api/port/:id", function(req, res) {
+    app.post("/api/sell", function(req, res) {
         Portfolio.destroy({
             where: {
             owned_stock: req.params.owned_stock

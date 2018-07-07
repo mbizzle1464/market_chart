@@ -1,12 +1,13 @@
 import React from "react";
-import { Route, Router, IndexRoute, Link } from "react-router-dom";
+import { HashRouter, Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Segment, Sidebar, Menu, Icon, Message, } from 'semantic-ui-react';
+import Amplify from "aws-amplify";
+import { Greetings } from 'aws-amplify-react';
 import Home from "../home";
 import About from "../about";
 import News from "../news";
-import Signin from "../signin";
-import Signup from "../signup";
 import Authenticator from "../authenticator";
-import Private from "../private";
+import PrivateRoute from "../private";
 import CompanyDetails from "../company";
 import CompanyDescription from "../company-description";
 import CompanyFinancials from "../company-financials";
@@ -17,14 +18,15 @@ import CompanyPeers from "../company-peers";
 import CompanyChart from "../company-chart";
 import MyStocks from "../my-stocks";
 import config from "../../aws-exports";
-import Amplify from "aws-amplify";
 import Footer from "../footer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Signout from "../signout"; 
+
 
 library.add(faSearch);
-
+Amplify.Logger.LOG_LEVEL = 'DEBUG';
 Amplify.configure(config);
 
 const App = () => (
@@ -59,8 +61,18 @@ const App = () => (
       </nav>
     </header>
     <main>
-      <Route exact path="/about" component={About} />
-      <Route
+    <Router>
+        <Switch>
+          <Route
+        exact
+        path="/"
+        component={() => (
+          <div>
+            <Home />
+          </div>
+        )}
+      />
+          <Route
         exact
         path="/companies/:companyId"
         component={() => (
@@ -75,17 +87,14 @@ const App = () => (
             <CompanyPeers />
           </div>
         )}
-      />
-      <Route
-        exact
-        path="/"
-        component={() => (
-          <div>
-            <Home />
-            <Private />
-          </div>
-        )}
-      />
+        />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/auth" component={Authenticator} />
+          <PrivateRoute path='/mystocks' component={MyStocks} />
+          <PrivateRoute path='/signout' component={Signout} />
+          <Route exact path="/News" component={News} />
+        </Switch>
+    </Router>      
       <Footer />
     </main>
   </div>
