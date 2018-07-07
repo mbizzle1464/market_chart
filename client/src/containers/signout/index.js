@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
+import { Grid, Message, Header } from 'semantic-ui-react'
 import { Auth } from 'aws-amplify'
 
 
@@ -7,15 +8,27 @@ import { Auth } from 'aws-amplify'
 class Signout extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Sign Out</h1>
-        <p onClick={() => {
+      <div className="widget">
+      <Grid
+                textAlign='center'
+                style={{ height: '100%' }}
+                verticalAlign='middle'
+              >
+        <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' color='teal' textAlign='center'>
+                    {' '}See you next time!
+                  </Header>
+        <Message>
+          <p onClick={() => {
           Auth.signOut()
             .then(() => {
               this.props.history.push('/')
             })
             .catch(() => console.log('error signing out...'))
         }}>Sign Out</p>
+        </Message>
+        </Grid.Column>
+        </Grid>
       </div>
     )
   }

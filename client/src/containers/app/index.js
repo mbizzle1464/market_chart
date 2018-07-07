@@ -21,6 +21,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Signout from "../signout"; 
+import ForgotPasswordForm from "../forgotpasswordform";
+
 
 
 library.add(faSearch);
@@ -88,6 +90,7 @@ const App = () => (
         />
           <Route exact path="/about" component={About} />
           <Route exact path="/auth" component={Authenticator} />
+          <Route exact path="/forgotpassword" component={ForgotPasswordForm} />
           <PrivateRoute path='/mystocks' component={MyStocks} />
           <PrivateRoute path='/signout' component={Signout} />
           <Route exact path="/News" component={News} />

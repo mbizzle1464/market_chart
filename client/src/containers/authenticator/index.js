@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route } from 'react-router-dom'
 import { Authenticator } from "aws-amplify-react";
 import { Grid, Message } from 'semantic-ui-react'
 import { Bootstrap } from "a-theme-react";
@@ -15,8 +16,12 @@ export default class Login extends Component {
       showSignIn
     })
   }
+  
   render() {
-      const { showSignIn } = this.state
+    const forgotPassword = {
+
+    }
+    const { showSignIn } = this.state
     return (
       <div className="widget">
       <Authenticator hideDefault>
@@ -38,6 +43,9 @@ export default class Login extends Component {
         </Message>
         <Message>
          Have an account? <a onClick={() => this.switchState(true)}>Sign In</a>
+        </Message>
+        <Message> 
+          <a onClick={() => {ForgotPasswordForm}}>Forgot Password? </a>
         </Message>
         </Grid.Column>
         </Grid>
