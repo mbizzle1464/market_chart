@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Authenticator } from "aws-amplify-react";
 import { Grid, Message } from 'semantic-ui-react'
-import { Bootstrap } from 'a-theme-react';
+import { Bootstrap } from "a-theme-react";
 import LoginForm from "../loginform";
 import RegisterForm from "../registerform";
 import ForgotPasswordForm from "../forgotpasswordform";
-
 
 export default class Login extends Component {
   state = {
@@ -19,6 +18,7 @@ export default class Login extends Component {
   render() {
       const { showSignIn } = this.state
     return (
+      <div className="widget">
       <Authenticator hideDefault>
       {
           showSignIn ? (
@@ -42,8 +42,7 @@ export default class Login extends Component {
         </Grid.Column>
         </Grid>
       </Authenticator>
-
+      </div>
     );
   }
 }
-
