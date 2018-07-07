@@ -3,6 +3,8 @@
 // to the db this are dummy routes and can be edited to match the final routes we
 // will be using for the final project if we need any more database
 // functionalities please let me know so I can add them or modify them
+// To add these on our app add an axios.get function pointing towards the
+// the route address in the function desired 
 // *********************************************************************************
 
 // Dependencies
@@ -17,11 +19,13 @@ var Watchlist = require("../models/watchlist.js");
 
 module.exports = function(app) {
 
-
     // Get All Users
     app.get("/api/all", function(req, res){
-        Users.findAll({}).then(function(results){
+        Users.findAll({
+
+        }).then(function(results){
             res.json(results);
+            console.log("Book Data:");
         })
     });
 
@@ -34,6 +38,7 @@ module.exports = function(app) {
         }).then(function(results){
             res.json(results);
         });
+        zx
     });
 
     // Get User Portolio
@@ -100,7 +105,7 @@ module.exports = function(app) {
           });
     });
 
-    // Add a user
+    // Add a user Chsnge to POST
     app.post("api/register", function(req, res){
         console.log("User Data:");
         console.log(req.body);
@@ -141,11 +146,11 @@ module.exports = function(app) {
 
     });
     // Add order to Order list
-    app.post("api/register", function(req, res){
+    app.post("api/addOrder", function(req, res){
         console.log("User Data: ");
         console.log(req.body);
         Orders.create({
-            order_id: req.body.first_name,
+            order_id: req.body.first_name ,
             customer_id: req.body.last_name,
             portfolio_id: req.body.username,
             order_date: req.body.email,

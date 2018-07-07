@@ -4,12 +4,19 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection");
 
 var Users = sequelize.define("users", {
+
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+    },
     first_name: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             len: [1,25]
-        }
+        },
     },
     last_name: {
         type: Sequelize.STRING,
@@ -29,7 +36,7 @@ var Users = sequelize.define("users", {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            len: [1,244]
+            isEmail: true
         }    
     },
     password:{
@@ -65,7 +72,10 @@ var Users = sequelize.define("users", {
             len: [1,3]
         },
         defaultValue: 'no',
-    },
+    }
+},
+{
+    timestamps: false
 });
 
 Users.sync();
