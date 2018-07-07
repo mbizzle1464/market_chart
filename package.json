@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "amazon-cognito-auth-js": "^1.2.3",
+    "amazon-cognito-identity-js": "^2.0.13",
     "aws-amplify": "^0.4.8",
     "body-parser": "^1.18.3",
     "express": "^4.16.2",

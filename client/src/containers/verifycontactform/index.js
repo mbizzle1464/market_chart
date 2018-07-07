@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Message, Segment, Container } from 'semantic-ui-react'
+
 import { Auth, Logger } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 

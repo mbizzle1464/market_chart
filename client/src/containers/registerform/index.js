@@ -1,30 +1,45 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
-
-import { Auth, Logger } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 
-const logger = new Logger('RegisterForm');
 
 class RegisterForm extends AuthPiece {
-    constructor(props) {
-        super(props);
-
-        this.signUp = this.signUp.bind(this);
+    state = {
+      username: '',
+      password: '',
+      email: '',
+      phone_number: '',
+      authCode: '',
+      showConfirmation: false
+    }
+    onChange = (key, value) => {
+      this.setState({
+        [key]: value
+      })
     }
 
-    signUp() {
-        const { username, password, email, phone_number } = this.inputs;
-        logger.debug('username: ' + username);
-        Auth.signUp(username, password, email, phone_number)
-            .then(data => this.changeState('confirmSignUp', data))
-            .catch(err => this.error(err));
-    }
-
+    signUp = () => {
+    const { username, password, email, phone_number } = this.state
+    Auth.signUp({
+      username,
+      password,
+      attributes: {
+        email,
+        phone_number
+      }
+    })
+    .then(() => this.setState({ showConfirmation: true }),
+    this.props.history.push('/'))
+    .catch(err => this.error(err));
+  }
+  confirmSignUp = () => {
+    Auth.confirmSignUp(this.state.username, this.state.authCode)
+      .then(() => this.props.history.push('/'))
+      .catch(err => this.error(err));
+  }
     render() {
-        const { authState } = this.props;
-        if ('signUp' !== authState) { return null; }
-
+        const { showConfirmation } = this.state
         return (
             <div className='login-form'>
               {/*
@@ -39,7 +54,9 @@ class RegisterForm extends AuthPiece {
                   height: 100%;
                 }
               `}</style>
-              <Grid
+              {
+                !showConfirmation && (
+                  <Grid
                 textAlign='center'
                 style={{ height: '100%' }}
                 verticalAlign='middle'
@@ -57,7 +74,7 @@ class RegisterForm extends AuthPiece {
                         iconPosition='left'
                         placeholder='Username'
                         name="username"
-                        onChange={this.handleInputChange}
+                        onChange={evt => this.onChange('username', evt.target.value)}
                       />
                       <Form.Input
                         fluid
@@ -66,7 +83,7 @@ class RegisterForm extends AuthPiece {
                         placeholder='Password'
                         type='password'
                         name="password"
-                        onChange={this.handleInputChange}
+                        onChange={evt => this.onChange('password', evt.target.value)}
                       />
                       <Form.Input
                         fluid
@@ -74,7 +91,7 @@ class RegisterForm extends AuthPiece {
                         iconPosition='left'
                         placeholder='Email'
                         name="email"
-                        onChange={this.handleInputChange}
+                        onChange={evt => this.onChange('email', evt.target.value)}
                       />
                       <Form.Input
                         fluid
@@ -82,7 +99,7 @@ class RegisterForm extends AuthPiece {
                         iconPosition='left'
                         placeholder='Phone Number'
                         name="phone_number"
-                        onChange={this.handleInputChange}
+                        onChange={evt => this.onChange('phone_number', evt.target.value)}
                       />
 
                       <Button
@@ -93,14 +110,52 @@ class RegisterForm extends AuthPiece {
                       >Register</Button>
                     </Segment>
                   </Form>
-                  <Message>
-                    Have an account? <a onClick={() => this.changeState('signIn')}>Sign In</a>
-                  </Message>
-                  <Message>
-                    <a onClick={() => this.changeState('confirmSignUp')}>Confirm a Code</a>
-                  </Message>
                 </Grid.Column>
               </Grid>
+                )
+              }
+              {
+               showConfirmation && (
+               <Grid
+                textAlign='center'
+                style={{ height: '100%' }}
+                verticalAlign='middle'
+              >
+                <Grid.Column style={{ maxWidth: 450 }}>
+                  <Header as='h2' color='teal' textAlign='center'>
+                    {' '}Confirm your registration
+                  </Header>
+                  <Form size='large'>
+                    <Segment>
+                      <Form.Input
+                        fluid
+                        icon='puzzle'
+                        iconPosition='left'
+                        placeholder='Code'
+                        name="code"
+                        onChange={evt => this.onChange('authCode', evt.target.value)}
+                      />
+
+                      <Button.Group>
+                          <Button
+                                color='teal'
+                                size='large'
+                                onClick={this.confirmSignUp.bind(this)}
+                          >Confirm</Button>
+                          <Button.Or />
+                          <Button
+                                color='teal'
+                                size='large'
+                                onClick={this.resend}
+                          >Resend</Button>
+                      </Button.Group>
+                    </Segment>
+                  </Form>
+                </Grid.Column>
+              </Grid>
+
+               )
+              }
             </div>
         )
     }

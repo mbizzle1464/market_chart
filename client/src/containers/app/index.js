@@ -1,8 +1,6 @@
 import React from "react";
-import { HashRouter, Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
-import { Segment, Sidebar, Menu, Icon, Message, } from 'semantic-ui-react';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Amplify from "aws-amplify";
-import { Greetings } from 'aws-amplify-react';
 import Home from "../home";
 import About from "../about";
 import News from "../news";

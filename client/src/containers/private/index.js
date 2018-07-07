@@ -1,20 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react'
 import {
-    withRouter,
-    Switch,
-    Route,
-    Redirect,
-    BrowserRouter as Router
+  withRouter,
+  Route,
+  Redirect,
 } from 'react-router-dom'
-import { Container } from 'semantic-ui-react';
+import { Auth } from 'aws-amplify'
 
-import { Auth } from 'aws-amplify';
 
-const UserInfo = (props) => {
-    return (
-        <div>{JSON.stringify(props.user)}</div>
-    )
-}
 
 class PrivateRoute extends React.Component {
   state = {

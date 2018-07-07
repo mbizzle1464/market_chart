@@ -1,45 +1,43 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Message, Segment, Divider } from 'semantic-ui-react'
-import { Auth, Logger, JS } from 'aws-amplify';
+
+import { Auth } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 
-const logger = new Logger('LoginForm');
-
-
 class LoginForm extends AuthPiece {
-    constructor(props) {
-        super(props);
 
-        this.checkContact = this.checkContact.bind(this);
-        this.signIn = this.signIn.bind(this);
-    }
-
-    checkContact(user) {
-        Auth.verifiedContact(user)
-            .then(data => {
-              console.log(data)
-                if (!JS.isEmpty(data.verified)) {
-                    this.changeState('signedIn', user);
-                } else {
-                    user = Object.assign(user, data);
-                    this.changeState('verifyContact', user);
-                }
-            });
-    }
-
-    signIn() {
-        const { username, password } = this.inputs;
-        logger.debug('username: ' + username);
-        Auth.signIn(username, password)
-            .then(user => this.checkContact(user))
-            .catch(err => this.error(err));
-    }
-
+state = {
+    username: '',
+    password: '',
+    showConfirmation: false,
+    user: {},
+    authCode: ''
+  }
+  onChange = (key, value) => {
+    this.setState({
+      [key]: value
+    })
+  }
+  signIn = () => {
+    Auth.signIn(this.state.username, this.state.password)
+      .then(user => {
+        this.setState({ user, showConfirmation: true })
+      })
+      .catch(err => this.error(err));
+}
+ confirmSignIn = () => {
+    const { history } = this.props
+    Auth.confirmSignIn(this.state.user, this.state.authCode, this.state.user.challengeName)
+      .then(user => {
+        history.push('/')
+      })
+      .catch(err => this.error(err));
+  }
     render() {
-        const { authState } = this.props;
-        if (!['signIn', 'singedOut', 'signedUp'].includes(authState)) { return null; }
-
         return (
+      <div>
+        {
+          !this.state.showConfirmation && (
             <div className='login-form'>
               {/*
                 Heads up! The styles below are necessary for the correct render of this example.
@@ -71,7 +69,7 @@ class LoginForm extends AuthPiece {
                         iconPosition='left'
                         placeholder='Username'
                         name="username"
-                        onChange={this.handleInputChange}
+                        onChange={evt => this.onChange('username', evt.target.value)}
                       />
                       <Form.Input
                         fluid
@@ -80,7 +78,7 @@ class LoginForm extends AuthPiece {
                         placeholder='Password'
                         type='password'
                         name="password"
-                        onChange={this.handleInputChange}
+                        onChange={evt => this.onChange('password', evt.target.value)}
                       />
 
                       <Button
@@ -92,15 +90,67 @@ class LoginForm extends AuthPiece {
                       <Divider/>
                     </Segment>
                   </Form>
-                  <Message>
-                    New to us? <a onClick={() => this.changeState('signUp')}>Sign Up</a>
-                  </Message>
-                  <Message>
-                    <a onClick={() => this.changeState('forgotPassword')}>ForgotPassword</a>
-                  </Message>
                 </Grid.Column>
               </Grid>
             </div>
+          )
+        }
+        {
+          this.state.showConfirmation && (
+            <div className='login-form'>
+              {/*
+                Heads up! The styles below are necessary for the correct render of this example.
+                You can do same with CSS, the main idea is that all the elements up to the `Grid`
+                below must have a height of 100%.
+              */}
+              <style>{`
+                body > div,
+                body > div > div,
+                body > div > div > div.login-form {
+                  height: 100%;
+                }
+              `}</style>
+              <Grid
+                textAlign='center'
+                style={{ height: '100%' }}
+                verticalAlign='middle'
+              >
+                <Grid.Column style={{ maxWidth: 450 }}>
+                  <Header as='h2' color='teal' textAlign='center'>
+                    {' '}Confirm your registration
+                  </Header>
+                  <Form size='large'>
+                    <Segment>
+                      <Form.Input
+                        fluid
+                        icon='puzzle'
+                        iconPosition='left'
+                        placeholder='Code'
+                        name="code"
+                        onChange={evt => this.onChange('authCode', evt.target.value)}
+                      />
+
+                      <Button.Group>
+                          <Button
+                                color='teal'
+                                size='large'
+                                onClick={this.confirmSignIn.bind(this)}
+                          >Confirm</Button>
+                          <Button.Or />
+                          <Button
+                                color='teal'
+                                size='large'
+                                onClick={this.resend}
+                          >Resend</Button>
+                      </Button.Group>
+                    </Segment>
+                  </Form>
+                </Grid.Column>
+              </Grid>
+            </div>
+          )
+        }
+      </div>
         )
     }
 }
