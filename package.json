@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-amplify": "^0.4.8",
     "body-parser": "^1.18.3",
     "express": "^4.16.2",
     "glamor": "^2.20.40",

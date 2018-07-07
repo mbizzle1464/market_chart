@@ -12,7 +12,7 @@ class Signout extends React.Component {
         <p onClick={() => {
           Auth.signOut()
             .then(() => {
-              this.props.history.push('/auth')
+              this.props.history.push('/')
             })
             .catch(() => console.log('error signing out...'))
         }}>Sign Out</p>
