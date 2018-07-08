@@ -40,8 +40,7 @@ const Orders = sequelize.define("orders", {
             len: [6]
         }
     },
-},
-);
+});
 
 Orders.sync();
 

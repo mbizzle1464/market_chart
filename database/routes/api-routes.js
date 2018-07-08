@@ -35,7 +35,7 @@ module.exports = function(app) {
     app.get("/api/user/portfolio", function(req, res){
         Portfolio.findAll({
             where: {
-                user_id: req.params.user_id
+                user_id: "1" // this needs to be req.params.user_id to handle user input
             }
         }).then(function(results) {
             res.json(results);
