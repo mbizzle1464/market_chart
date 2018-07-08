@@ -29,7 +29,7 @@ class AfterLoginForm extends AuthPiece {
               >
                 <Grid.Column style={{ maxWidth: 450 }}>
                   <Message>
-                    You are signed in. 
+                    You are signed in.
                   </Message>
                 </Grid.Column>
               </Grid>

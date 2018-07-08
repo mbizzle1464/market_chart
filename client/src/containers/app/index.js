@@ -1,8 +1,6 @@
 import React from "react";
-import { HashRouter, Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
-import { Segment, Sidebar, Menu, Icon, Message, } from 'semantic-ui-react';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Amplify from "aws-amplify";
-import { Greetings } from 'aws-amplify-react';
 import Home from "../home";
 import About from "../about";
 import News from "../news";
@@ -23,6 +21,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Signout from "../signout"; 
+import ForgotPasswordForm from "../forgotpasswordform";
+
 
 
 library.add(faSearch);
@@ -90,6 +90,7 @@ const App = () => (
         />
           <Route exact path="/about" component={About} />
           <Route exact path="/auth" component={Authenticator} />
+          <Route exact path="/forgotpassword" component={ForgotPasswordForm} />
           <PrivateRoute path='/mystocks' component={MyStocks} />
           <PrivateRoute path='/signout' component={Signout} />
           <Route exact path="/News" component={News} />

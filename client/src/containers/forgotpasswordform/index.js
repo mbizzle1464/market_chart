@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
-
+import { withRouter } from 'react-router-dom'
 import { Auth, Logger } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 
@@ -28,13 +28,15 @@ class ForgotPasswordForm extends AuthPiece {
 
     submit() {
         const { username, code, password } = this.inputs;
+        const { history } = this.props
         Auth.forgotPasswordSubmit(username, code, password)
             .then(data => {
                 logger.debug(data);
                 this.changeState('signIn');
                 this.setState({ delivery: null });
-            })
-            .catch(err => this.error(err));
+                history.push('/');
+              })
+              .catch(err => this.error(err));
     }
 
     sendView() {
@@ -94,12 +96,9 @@ class ForgotPasswordForm extends AuthPiece {
     }
 
     render() {
-        const { authState } = this.props;
-        if ('forgotPassword' !== authState) { return null; }
-
         const { delivery } = this.state;
         return (
-            <div className='login-form'>
+            <div className='widget'>
               {/*
                 Heads up! The styles below are necessary for the correct render of this example.
                 You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -124,9 +123,6 @@ class ForgotPasswordForm extends AuthPiece {
                   <Form size='large'>
                     { delivery? this.submitView() : this.sendView() }
                   </Form>
-                  <Message>
-                    Back to <a onClick={() => this.changeState('signIn')}>Sign In</a>
-                  </Message>
                 </Grid.Column>
               </Grid>
             </div>
@@ -134,4 +130,4 @@ class ForgotPasswordForm extends AuthPiece {
     }
 }
 
-export default ForgotPasswordForm
+export default withRouter(ForgotPasswordForm)
