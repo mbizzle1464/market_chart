@@ -45,7 +45,7 @@ export default class Login extends Component {
          Have an account? <a onClick={() => this.switchState(true)}>Sign In</a>
         </Message>
         <Message> 
-          <a onClick={() => {ForgotPasswordForm}}>Forgot Password? </a>
+          <a href='/forgotpassword' style={{cursor: 'pointer'}}>Forgot Password?</a>
         </Message>
         </Grid.Column>
         </Grid>

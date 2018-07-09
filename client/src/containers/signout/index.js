@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import { Grid, Message, Header } from 'semantic-ui-react'
+import { Button,Grid, Header } from 'semantic-ui-react'
 import { Auth } from 'aws-amplify'
 
 
@@ -18,15 +18,14 @@ class Signout extends React.Component {
         <Header as='h2' color='teal' textAlign='center'>
                     {' '}See you next time!
                   </Header>
-        <Message>
-          <p onClick={() => {
+          <Button><p onClick={() => {
           Auth.signOut()
             .then(() => {
               this.props.history.push('/')
             })
             .catch(() => console.log('error signing out...'))
         }}>Sign Out</p>
-        </Message>
+        </Button>
         </Grid.Column>
         </Grid>
       </div>
