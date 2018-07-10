@@ -18,9 +18,7 @@ export default class Login extends Component {
   }
   
   render() {
-    const forgotPassword = {
 
-    }
     const { showSignIn } = this.state
     return (
       <div className="widget">

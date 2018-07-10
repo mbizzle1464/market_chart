@@ -31,8 +31,7 @@ class RegisterForm extends AuthPiece {
         phone_number
       }
     })
-    .then(() => this.setState({ showConfirmation: true }),
-    this.props.history.push('/'))
+    .then(() => this.setState({ showConfirmation: true }))
     .catch(err => this.error(err));
   }
   confirmSignUp = () => {

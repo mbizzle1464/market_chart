@@ -29,7 +29,7 @@ class MyStock extends React.Component {
     return (
       <div>
       <div className="widget">
-      <h1>Welcome {this.state.username}</h1>
+      <h1>Welcome, {this.state.username}</h1>
         <div className="search-container">
         </div>
       </div>
