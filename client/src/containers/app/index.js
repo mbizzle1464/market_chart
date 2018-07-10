@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Switch,
-  Link,
-  withRouter,
-  BrowserRouter as Router
-} from "react-router-dom";
+import { Route, Switch, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
 import Amplify from "aws-amplify";
 import Home from "../home";
 import About from "../about";

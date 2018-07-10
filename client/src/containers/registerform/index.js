@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import { Auth } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 
@@ -31,8 +30,7 @@ class RegisterForm extends AuthPiece {
         phone_number
       }
     })
-    .then(() => this.setState({ showConfirmation: true }),
-    this.props.history.push('/'))
+    .then(() => this.setState({ showConfirmation: true }))
     .catch(err => this.error(err));
   }
   confirmSignUp = () => {

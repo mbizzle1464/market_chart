@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Message, Segment, Divider } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment, Divider } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
 import { Auth } from 'aws-amplify';

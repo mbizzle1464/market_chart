@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 // import { getData } from "../../modules/PullStocks";
 import { loadCompanyPage } from "../../modules/Home.js";
 import { getIexData } from "../../modules/PullStocks.js";
-import Authenticator from "../authenticator";
 import News from "../news";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router-dom";

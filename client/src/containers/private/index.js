@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  withRouter,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { withRouter, Route, Redirect } from 'react-router-dom'
 import { Auth } from 'aws-amplify'
 
 
