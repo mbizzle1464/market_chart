@@ -1,0 +1,17 @@
+{
+  "portfolio": {
+    "User_id": 1,
+    "stocks": [
+      {
+        "symbol": "AAPL",
+        "sharesOwned": 245,
+        "currentPrice": 193.35
+      },
+      {
+        "symbol": "FB",
+        "sharesOwned": 332,
+        "currentPrice": 21.43
+      }
+    ]
+  }
+}

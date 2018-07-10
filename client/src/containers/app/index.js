@@ -1,5 +1,11 @@
 import React from "react";
-import { Route, Switch, Link, withRouter, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Link,
+  withRouter,
+  BrowserRouter as Router
+} from "react-router-dom";
 import Amplify from "aws-amplify";
 import Home from "../home";
 import About from "../about";
@@ -23,6 +29,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Signout from "../signout";
 import ForgotPasswordForm from "../forgotpasswordform";
 import Header from "../header";
+import MyStock from "../my-stocks/index";
 
 library.add(faSearch);
 Amplify.Logger.LOG_LEVEL = "DEBUG";
@@ -63,6 +70,7 @@ const App = () => (
         <Route exact path="/forgotpassword" component={ForgotPasswordForm} />
         <PrivateRoute path="/mystocks" component={MyStocks} />
         <PrivateRoute path="/signout" component={Signout} />
+        <Route path="/temporary" component={MyStocks} />
         <Route exact path="/News" component={News} />
       </Switch>
 

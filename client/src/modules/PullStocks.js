@@ -14,6 +14,7 @@ export const RECEIVE_LOGO = "PullStocks/RECEIVE_LOGO";
 export const RECEIVE_PEERS = "PullStocks/RECEIVE_PEERS";
 export const RECEIVE_CHART = "PullStocks/RECEIVE_CHART";
 export const RELOAD_COMPANY = "PullStocks/RELOAD_COMPANY";
+export const RECEIVE_PORTFOLIO = "PullStocks/RECEIVE_PORTFOLIO";
 
 const initialState = {
   quote: [],
@@ -23,7 +24,8 @@ const initialState = {
   peers: [],
   website: "",
   awaitingState: true,
-  awaitingChart: true
+  awaitingChart: true,
+  awaitingPortfolio: false
 };
 
 // export default (state = initialState, action) => {
@@ -78,6 +80,19 @@ export default (state = initialState, action) => {
           ceo,
           sector,
           industry
+        };
+      }
+    case RECEIVE_PORTFOLIO:
+      if (!action.payload) {
+        return [...state];
+      } else {
+        init();
+        let portfolio = action.payload[0];
+        let awaitingPortfolio = true;
+        return {
+          ...state,
+          portfolio,
+          awaitingPortfolio
         };
       }
     case RECEIVE_NEWS:
@@ -463,6 +478,14 @@ export const getIexData = (currentCompany, requestType) => async dispatch => {
       });
       break;
   }
+};
+
+export const getPortfolio = user_id => async dispatch => {
+  const res = await axios.get(`/assets/data/portfolio.json`);
+  dispatch({
+    type: RECEIVE_PORTFOLIO,
+    payload: [res.data]
+  });
 };
 
 // For future websocket use.  Not fully wired up yet.  Do not delete this code without removing the middleware.

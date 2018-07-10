@@ -40,7 +40,7 @@ module.exports = function(app) {
     });
   });
   // Get All User Orders
-  app.get("/api/user/rders", function(req, res) {
+  app.get("/api/user/orders", function(req, res) {
     Orders.findAll({
       where: {
         user_id: req.params.user_id

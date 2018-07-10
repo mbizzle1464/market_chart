@@ -2,51 +2,83 @@ import React from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getIexData } from "../../modules/PullStocks";
+import { getIexData, getPortfolio } from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
-import { Auth } from 'aws-amplify'
-import News from "../news"
+import { Auth } from "aws-amplify";
+import News from "../news";
 
-// I wanted to see if this functionality of Private Route works and it did! This is why the other items are commented out. 
+// I wanted to see if this functionality of Private Route works and it did! This is why the other items are commented out.
 
-
-class MyStock extends React.Component {
-  state = {
-    username: '',
-    user: {}
-  }
-  componentDidMount() {
-    Auth.currentAuthenticatedUser().then(user => this.setState({ user }))
-    Auth.currentUserInfo()
-      .then(data => {
-        this.setState({
-          username: data.username
-        })
-      })
-      .catch(err => console.log('error: ', err))
-  }
-  render() {
+const MyStocks = props => {
+  // state = {
+  //   username: "",
+  //   user: {}
+  // };
+  // componentDidMount() {
+  //   Auth.currentAuthenticatedUser().then(user => this.setState({ user }));
+  //   Auth.currentUserInfo()
+  //     .then(data => {
+  //       this.setState({
+  //         username: data.username
+  //       });
+  //     })
+  //     .catch(err => console.log("error: ", err));
+  // }
+  if (!props.awaitingPortfolio) {
+    props.getPortfolio(1);
+    return <p>no data</p>;
+  } else {
     return (
       <div>
-      <div className="widget">
-      <h1>Welcome, {this.state.username}</h1>
-        <div className="search-container">
+        <div className="widget">
+          {/* <h1>Welcome, {this.state.username}</h1> */}
+          <h1>
+            Testing Should be AAPL: {props.portfolio.portfolio.stocks[0].symbol}
+          </h1>
+          <div className="search-container" />
         </div>
-      </div>
+        <div className="company-quick-view widget">
+          <div className="company-quick-view_basic widget_content-area">
+            <table>
+              <thead>
+                <tr>
+                  <th>Stock</th>
+                  <th>Shares</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MSFT</td>
+                  <td>24</td>
+                  <td>187.3</td>
+                </tr>
+                <tr>
+                  <td>MSFT</td>
+                  <td>24</td>
+                  <td>187.3</td>
+                </tr>
+                <tr>
+                  <td>MSFT</td>
+                  <td>24</td>
+                  <td>187.3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div>
           <News />
         </div>
       </div>
-    )
+    );
   }
-}
-
-export default MyStock
+};
 
 /*
 const MyStocks = props => {
 
-  
+
   //   const currentCompany = props.path.split("/");
 
   //   if (!props.website) {
@@ -91,21 +123,17 @@ const MyStocks = props => {
   );
   //   }
 };
-
+*/
 const mapStateToProps = state => ({
-  //   quote: state.PullStocks.quote,
-  //   path: state.routing.location.pathname,
-  //   website: state.PullStocks.website
-  // description: state.PullStocks.description,
-  // ceo: state.PullStocks.ceo,
-  // sector: state.PullStocks.sector,
-  // industry: state.PullStocks.industry
+  awaitingPortfolio: state.PullStocks.awaitingPortfolio,
+  path: state.routing.location.pathname,
+  portfolio: state.PullStocks.portfolio
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getIexData,
+      getPortfolio,
       changePage: () => push("/about-us")
     },
     dispatch
@@ -114,4 +142,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MyStocks);*/
+)(MyStocks);
