@@ -1,10 +1,9 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
-import { Auth, Logger } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 
-const logger = new Logger('ForgotPasswordForm');
 
 class ForgotPasswordForm extends AuthPiece {
     constructor(props) {
@@ -20,7 +19,6 @@ class ForgotPasswordForm extends AuthPiece {
         const { username } = this.inputs;
         Auth.forgotPassword(username)
             .then(data => {
-                logger.debug(data)
                 this.setState({ delivery: data.CodeDeliveryDetails });
             })
             .catch(err => this.error(err));
@@ -31,7 +29,6 @@ class ForgotPasswordForm extends AuthPiece {
         const { history } = this.props
         Auth.forgotPasswordSubmit(username, code, password)
             .then(data => {
-                logger.debug(data);
                 this.changeState('signIn');
                 this.setState({ delivery: null });
                 history.push('/');

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Route } from 'react-router-dom'
 import { Authenticator } from "aws-amplify-react";
 import { Grid, Message } from 'semantic-ui-react'
-import { Bootstrap } from "a-theme-react";
 import LoginForm from "../loginform";
 import RegisterForm from "../registerform";
-import ForgotPasswordForm from "../forgotpasswordform";
 
 export default class Login extends Component {
   state = {
