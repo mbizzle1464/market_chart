@@ -587,6 +587,14 @@ th {
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  background-image: linear-gradient(
+    to right,
+    #000000,
+    #0e0e0e,
+    #171717,
+    #1f1f1f,
+    #272727
+  );
 }
 .ui.teal.header {
   color: #ff9b04 !important;
@@ -643,4 +651,18 @@ div.ui.fluid.left.icon.input input {
   -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset,
     0 0 0 0 transparent;
   box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset, 0 0 0 0 transparent;
+}
+.footer > ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footer_logo {
+  justify-self: end;
+}
+.center {
+  justify-self: center;
+}
+.copyright {
+  grid-column: 1 / span 3;
+  justify-self: center;
 }

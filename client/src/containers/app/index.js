@@ -28,6 +28,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Signout from "../signout";
 import ForgotPasswordForm from "../forgotpasswordform";
+import Header from "../header";
 
 library.add(faSearch);
 Amplify.Logger.LOG_LEVEL = "DEBUG";
@@ -35,36 +36,7 @@ Amplify.configure(config);
 
 const App = () => (
   <div>
-    {/* <header>
-      <Link to="/">Home </Link>
-      <Link to="/companies/msft">MSFT</Link>
-      <Link to="/companies/aapl">AAPL</Link>
-    </header> */}
-    <header>
-      <div className="logo-container">
-        <img height="80px" src="/images/logo/logo.svg" />
-      </div>
-      <nav>
-        <ul className="nav-list">
-          <li className="nav-list__item">
-            <Link to="/companies/msft">MSFT</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/about">About</Link>
-            {/* <a href="/about">About</a> */}
-          </li>
-          <li className="nav-list__item">
-            <Link to="/mystocks">Portfolio</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/news">About</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/signout">Sign Out</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <Header />
     <main>
       <Switch>
         <Route
