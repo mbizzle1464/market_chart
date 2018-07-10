@@ -1,5 +1,11 @@
 import React from "react";
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import {
+  Route,
+  Switch,
+  Link,
+  withRouter,
+  BrowserRouter as Router
+} from "react-router-dom";
 import Amplify from "aws-amplify";
 import Home from "../home";
 import About from "../about";
@@ -20,13 +26,11 @@ import Footer from "../footer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import Signout from "../signout"; 
+import Signout from "../signout";
 import ForgotPasswordForm from "../forgotpasswordform";
 
-
-
 library.add(faSearch);
-Amplify.Logger.LOG_LEVEL = 'DEBUG';
+Amplify.Logger.LOG_LEVEL = "DEBUG";
 Amplify.configure(config);
 
 const App = () => (
@@ -43,62 +47,62 @@ const App = () => (
       <nav>
         <ul className="nav-list">
           <li className="nav-list__item">
-            <a href="/">Home</a>
+            <Link to="/companies/msft">MSFT</Link>
           </li>
           <li className="nav-list__item">
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
+            {/* <a href="/about">About</a> */}
           </li>
           <li className="nav-list__item">
-            <a href="/mystocks">Portfolio</a>
+            <Link to="/mystocks">Portfolio</Link>
           </li>
           <li className="nav-list__item">
-            <a href="/news">Stock News</a>
+            <Link to="/news">About</Link>
           </li>
           <li className="nav-list__item">
-            <a href="/signout">Sign Out</a>
+            <Link to="/signout">Sign Out</Link>
           </li>
         </ul>
       </nav>
     </header>
     <main>
-    <Router>
-        <Switch>
-          <Route
-        exact
-        path="/"
-        component={() => (
-          <div>
-            <Home />
-          </div>
-        )}
-      />
-          <Route
-        exact
-        path="/companies/:companyId"
-        component={() => (
-          <div className="main-wrapper">
-            <CompanyDetails />
-            <CompanyChart />
-            <CompanyDescription />
-            {/* <CompanyNews /> */}
-            <CompanyFinancials />
-            <CompanyStats />
-            <CompanyEarnings />
-            <CompanyPeers />
-          </div>
-        )}
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={() => (
+            <div>
+              <Home />
+            </div>
+          )}
         />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/auth" component={Authenticator} />
-          <Route exact path="/forgotpassword" component={ForgotPasswordForm} />
-          <PrivateRoute path='/mystocks' component={MyStocks} />
-          <PrivateRoute path='/signout' component={Signout} />
-          <Route exact path="/News" component={News} />
-        </Switch>
-    </Router>      
+        <Route
+          exact
+          path="/companies/:companyId"
+          component={() => (
+            <div className="main-wrapper">
+              <CompanyDetails />
+              <CompanyChart />
+              <CompanyDescription />
+              {/* <CompanyNews /> */}
+              <CompanyFinancials />
+              <CompanyStats />
+              <CompanyEarnings />
+              <CompanyPeers />
+            </div>
+          )}
+        />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/auth" component={Authenticator} />
+        <Route exact path="/forgotpassword" component={ForgotPasswordForm} />
+        <PrivateRoute path="/mystocks" component={MyStocks} />
+        <PrivateRoute path="/signout" component={Signout} />
+        <Route exact path="/News" component={News} />
+      </Switch>
+
       <Footer />
     </main>
   </div>
 );
 
-export default App;
+export default withRouter(App);

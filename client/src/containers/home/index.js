@@ -8,31 +8,32 @@ import { getIexData } from "../../modules/PullStocks.js";
 import Authenticator from "../authenticator";
 import News from "../news";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withRouter } from "react-router-dom";
 
 const Home = props => {
   return (
     <React.Fragment>
-    <div className="widget">
-      <h1>Search Companies</h1>
-      <div className="search-container">
-        <input
-          type="text"
-          className="stock-search"
-          id="stock-search"
-          placeholder="MSFT"
-        />
-        <button
-          className="stock-search-button"
-          id="stock-search-button"
-          onClick={props.changePage}
-        >
-          <FontAwesomeIcon icon="search" />
-        </button>
+      <div className="widget">
+        <h1>Search Companies</h1>
+        <div className="search-container">
+          <input
+            type="text"
+            className="stock-search"
+            id="stock-search"
+            placeholder="MSFT"
+          />
+          <button
+            className="stock-search-button"
+            id="stock-search-button"
+            onClick={props.changePage}
+          >
+            <FontAwesomeIcon icon="search" />
+          </button>
+        </div>
       </div>
-    </div>
-    <div>
-      <News />
-    </div>
+      <div>
+        <News />
+      </div>
     </React.Fragment>
   );
 };
@@ -52,7 +53,9 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Home)
+);
