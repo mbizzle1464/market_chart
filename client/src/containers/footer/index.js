@@ -23,7 +23,7 @@ class Footer extends React.Component {
           <Link to="/contact">
             <li>Contact</li>
           </Link>
-          <Link to="/tos">
+          <Link to="/terms">
             <li>Terms of Service</li>
           </Link>
           <Link to="/privacy">

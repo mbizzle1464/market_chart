@@ -4911,6 +4911,10 @@ morgan@^1.9.0:
     on-finished "~2.3.0"
     on-headers "~1.0.1"
 
+move-decimal-point@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/move-decimal-point/-/move-decimal-point-0.0.4.tgz#29a6c0f07f60058380a79d58dae16bc90516e4c4"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6050,6 +6054,13 @@ react-fontawesome@^1.6.1:
   resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
   dependencies:
     prop-types "^15.5.6"
+
+react-number-format@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-3.4.2.tgz#95494bac3485206be5db0ef7f01822c77df3989b"
+  dependencies:
+    babel-runtime "^6.26.0"
+    prop-types "^15.6.0"
 
 react-redux@^5.0.7:
   version "5.0.7"

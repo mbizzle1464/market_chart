@@ -41,6 +41,22 @@ const Description = props => {
                     mode: 'nearest',
                     intersect: true
                   },
+                  scales: {
+                    xAxes: [{
+                      display: true,
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                      }
+                    }],
+                    yAxes: [{
+                      display: true,
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Share Amount in USD $'
+                      }
+                    }]
+                  }
               }}
             />
           </div>

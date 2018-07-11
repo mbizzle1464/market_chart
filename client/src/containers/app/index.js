@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Switch,
-  Link,
-  withRouter,
-  BrowserRouter as Router
-} from "react-router-dom";
+import { Route, Switch, withRouter} from "react-router-dom";
 import Amplify from "aws-amplify";
 import Home from "../home";
 import About from "../about";
@@ -15,7 +9,6 @@ import PrivateRoute from "../private";
 import CompanyDetails from "../company";
 import CompanyDescription from "../company-description";
 import CompanyFinancials from "../company-financials";
-import CompanyNews from "../company-news";
 import CompanyStats from "../company-stats";
 import CompanyEarnings from "../company-earnings";
 import CompanyPeers from "../company-peers";
@@ -23,13 +16,14 @@ import CompanyChart from "../company-chart";
 import MyStocks from "../my-stocks";
 import config from "../../aws-exports";
 import Footer from "../footer";
+import Terms from "../terms";
+import PrivacyPolicy from "../privacypolicy";
+import ContactUs from "../contactus";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Signout from "../signout";
 import ForgotPasswordForm from "../forgotpasswordform";
 import Header from "../header";
-import MyStock from "../my-stocks/index";
 
 library.add(faSearch);
 //Amplify.Logger.LOG_LEVEL = "DEBUG";
@@ -72,6 +66,9 @@ const App = () => (
         <PrivateRoute path="/signout" component={Signout} />
         <Route path="/temporary" component={MyStocks} />
         <Route exact path="/News" component={News} />
+        <Route exact path="/terms" component={Terms} />
+        <Route exact path="/privacy" component={PrivacyPolicy} />
+        <Route exact path="/contact" component={ContactUs} />
       </Switch>
 
       <Footer />
