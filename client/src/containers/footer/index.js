@@ -19,7 +19,7 @@ class Footer extends React.Component {
             <li>News</li>
           </Link>
         </ul>
-        <ul class="center">
+        <ul className="center">
           <Link to="/contact">
             <li>Contact</li>
           </Link>
