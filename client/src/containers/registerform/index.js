@@ -35,7 +35,7 @@ class RegisterForm extends AuthPiece {
   }
   confirmSignUp = () => {
     Auth.confirmSignUp(this.state.username, this.state.authCode)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/mystocks'))
       .catch(err => this.error(err));
   }
     render() {

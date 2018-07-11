@@ -3,15 +3,16 @@ import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getIexData } from "../../modules/PullStocks";
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 const Description = props => {
   const currentCompany = props.path.split("/");
 
   if (props.awaitingState) {
     props.getIexData(currentCompany[2], "chart/6m");
+    console.log(props.awaitingState);
     return <p>no data</p>;
-    console.log(props.aw);
+
   } else {
     console.log(props);
 
@@ -21,13 +22,25 @@ const Description = props => {
         <div className="widget">
           <div className="chart">
             <Line
-              data={props.chart.data}
+              data = { props.chart.data }
               options={{
                 title: {
                   display: "This is the chart tile",
                   text: `${props.quote.symbol} Close Chart`,
-                  fontSize: 25
-                }
+                  fontSize: 25, 
+                  responsive: true
+                },
+                legend: {
+                  display: false
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  hover: {
+                    mode: 'nearest',
+                    intersect: true
+                  },
               }}
             />
           </div>

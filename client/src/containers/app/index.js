@@ -32,7 +32,7 @@ import Header from "../header";
 import MyStock from "../my-stocks/index";
 
 library.add(faSearch);
-Amplify.Logger.LOG_LEVEL = "DEBUG";
+//Amplify.Logger.LOG_LEVEL = "DEBUG";
 Amplify.configure(config);
 
 const App = () => (
