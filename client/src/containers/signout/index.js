@@ -8,6 +8,8 @@ import { Auth } from 'aws-amplify'
 class Signout extends React.Component {
   render() {
     return (
+      <React.Fragment>
+      <div className="stripe" />
       <div className="widget">
       <Grid
                 textAlign='center'
@@ -29,6 +31,7 @@ class Signout extends React.Component {
         </Grid.Column>
         </Grid>
       </div>
+      </React.Fragment>
     )
   }
 }

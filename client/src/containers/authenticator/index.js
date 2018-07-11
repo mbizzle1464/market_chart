@@ -18,6 +18,8 @@ export default class Login extends Component {
 
     const { showSignIn } = this.state
     return (
+      <React.Fragment>
+      <div className="stripe" />
       <div className="widget">
       <Authenticator hideDefault>
       {
@@ -46,6 +48,7 @@ export default class Login extends Component {
         </Grid>
       </Authenticator>
       </div>
+      </React.Fragment>
     );
   }
 }

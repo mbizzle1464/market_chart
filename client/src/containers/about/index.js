@@ -4,6 +4,8 @@ import { withRouter, Link } from "react-router-dom";
 class About extends React.Component {
   render() {
     return (
+      <React.Fragment>
+      <div className="stripe" />
       <div className="widget">
         <h1>About</h1>
         <div className="search-container">
@@ -19,6 +21,7 @@ class About extends React.Component {
           </p>
         </div>
       </div>
+      </React.Fragment>
     );
   }
 }

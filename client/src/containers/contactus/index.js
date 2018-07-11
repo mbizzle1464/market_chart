@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 class ContactUs extends React.Component {
   render() {
     return (
+      <React.Fragment>
+      <div className="stripe" />
       <div className="widget">
         <h1>Contact Us</h1>
         <div className="search-container">
@@ -19,6 +21,7 @@ class ContactUs extends React.Component {
           </p>
         </div>
       </div>
+      </React.Fragment>
     );
   }
 }

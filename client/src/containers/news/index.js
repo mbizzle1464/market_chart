@@ -16,6 +16,7 @@ class News extends React.Component {
   render() {
     return (
       <React.Fragment>
+      <div className="stripe" />
         <div className="widget">
           <h1>Market News</h1>
           <div>

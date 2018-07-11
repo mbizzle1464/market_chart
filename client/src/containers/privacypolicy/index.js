@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 class PrivacyPolicy extends React.Component {
   render() {
     return (
+      <React.Fragment>
+      <div className="stripe" />
       <div className="widget">
         <h1>Privacy Policy</h1>
         <div className="search-container">
@@ -20,6 +22,7 @@ class PrivacyPolicy extends React.Component {
         </p>
         </div>
       </div>
+      </React.Fragment>
     );
   }
 }
