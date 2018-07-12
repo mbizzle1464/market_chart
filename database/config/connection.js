@@ -6,7 +6,7 @@
 const Sequelize = require("sequelize");
 
 // Creates mySQL connection using Sequelize, the empty string in the third argument spot is our password.
-const sequelize = new Sequelize("sequelize_test", "root", "P@ssWord", {
+const sequelize = new Sequelize("sequelize_test", "root", "P@ssw0rd", {
   host: "localhost",
   dialect: "mysql",
   operatorsAliases: false,

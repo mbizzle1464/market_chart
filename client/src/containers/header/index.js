@@ -21,7 +21,7 @@ class Header extends React.Component {
               <Link to="/mystocks">Portfolio</Link>
             </li>
             <li className="nav-list__item">
-              <Link to="/news">About</Link>
+              <Link to="/news">News</Link>
             </li>
             <li className="nav-list__item">
               <Link to="/signout">Sign Out</Link>

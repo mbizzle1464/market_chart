@@ -17,55 +17,55 @@ const Description = props => {
         <h1>Earnings</h1>
         <div className="key-value">
           <div className="companyName">
-            <div className="financial-label">Earnings Per Share</div>
+            <div className="financial-label">Earnings Per Share (EPS)</div>
             <div className="financial-data">{props.actualEPS}</div>
           </div>
           <div className="consensusEPS">
-            <div className="financial-label">consensusEPS</div>
+            <div className="financial-label">Consensus EPS</div>
             <div className="financial-data">{props.consensusEPS}</div>
           </div>
           <div className="estimatedEPS">
-            <div className="financial-label">estimatedEPS</div>
+            <div className="financial-label">Estimated EPS</div>
             <div className="financial-data">{props.estimatedEPS}</div>
           </div>
           <div className="announceTime">
-            <div className="financial-label">announceTime</div>
+            <div className = "financial-label">Announce Time BTO(Before open), DMT(During trading), AMC(After close) </div>
             <div className="financial-data">{props.announceTime}</div>
           </div>
           <div className="numberOfEstimates">
-            <div className="financial-label">numberOfEstimates </div>
+            <div className="financial-label">Number Of Estimates </div>
             <div className="financial-data">{props.numberOfEstimates}</div>
           </div>
           <div className="EPSSurpriseDollar">
-            <div className="financial-label">EPSSurpriseDollar </div>
+            <div className="financial-label">EPS Surprise Dollar</div>
             <div className="financial-data">{props.EPSSurpriseDollar}</div>
           </div>
           <div className="EPSReportDate">
-            <div className="financial-label">EPSReportDate </div>
+            <div className="financial-label">EPS Report Date</div>
             <div className="financial-data">{props.EPSReportDate}</div>
           </div>
           <div className="fiscalPeriod">
-            <div className="financial-label">fiscalPeriod</div>
+            <div className="financial-label">Fiscal Period</div>
             <div className="financial-data">{props.fiscalPeriod}</div>
           </div>
           <div className="fiscalEndDate">
-            <div className="financial-label">fiscalEndDate </div>
+            <div className="financial-label">Fiscal End Date</div>
             <div className="financial-data">{props.fiscalEndDate}</div>
           </div>
           <div className="yearAgo">
-            <div className="financial-label">yearAgo</div>
-            <div className="financial-data">{props.yearAgo}</div>
+            <div className="financial-label">EPS of Quarter a Year Ago</div>
+            <div className="financial-data">${props.yearAgo}</div>
           </div>
           <div className="yearAgoChangePercent">
-            <div className="financial-label">yearAgoChangePercent </div>
-            <div className="financial-data">{props.yearAgoChangePercent}</div>
+            <div className="financial-label">EPS Change of Percentage a Year Ago</div>
+            <div className="financial-data">{props.yearAgoChangePercent}%</div>
           </div>
           <div className="estimatedChangePercent">
-            <div className="financial-label">estimatedChangePercent </div>
-            <div className="financial-data">{props.estimatedChangePercent}</div>
+            <div className="financial-label">Estimated EPS Change of Percentage </div>
+            <div className="financial-data">{props.estimatedChangePercent}% </div>
           </div>
           <div className="symbolId">
-            <div className="financial-label">symbolId</div>
+            <div className="financial-label">IEX Stock Symbol</div>
             <div className="financial-data">{props.symbolId}</div>
           </div>
         </div>

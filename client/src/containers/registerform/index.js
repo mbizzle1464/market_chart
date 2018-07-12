@@ -35,7 +35,7 @@ class RegisterForm extends AuthPiece {
   }
   confirmSignUp = () => {
     Auth.confirmSignUp(this.state.username, this.state.authCode)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/mystocks'))
       .catch(err => this.error(err));
   }
     render() {
@@ -89,19 +89,18 @@ class RegisterForm extends AuthPiece {
                         fluid
                         icon='mail'
                         iconPosition='left'
-                        placeholder='Email'
+                        placeholder='Email@email.com'
                         name="email"
                         onChange={evt => this.onChange('email', evt.target.value)}
                       />
                       <Form.Input
                         fluid
-                        icon='phone'
-                        iconPosition='left'
-                        placeholder='Phone Number'
-                        name="phone_number"
-                        onChange={evt => this.onChange('phone_number', evt.target.value)}
-                      />
-
+                        icon = 'phone'
+                        iconPosition = 'left'
+                        placeholder = 'Use Format +1234567890'
+                        name = "phone_number" 
+                        onChange = { evt => this.onChange('phone_number', evt.target.value)}
+                        />
                       <Button
                             color='teal'
                             fluid

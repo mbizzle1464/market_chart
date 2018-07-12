@@ -8,6 +8,7 @@ class News extends React.Component {
   componentDidMount() {
     axios.get(`https://api.iextrading.com/1.0/stock/market/news/`).then(res => {
       const results = res.data;
+      console.log(results); 
       this.setState({
         results
       });
@@ -16,6 +17,7 @@ class News extends React.Component {
   render() {
     return (
       <React.Fragment>
+      <div className="stripe" />
         <div className="widget">
           <h1>Market News</h1>
           <div>
@@ -23,8 +25,8 @@ class News extends React.Component {
               this.state.results.length > 0 &&
               this.state.results.map(r => (
                 <div key={r.url}>
-                  <h4>{r.headline}</h4>
-                  <div>{r.summary}</div>
+                  <h2>{r.headline}</h2>
+                  <p>{r.summary}</p>
                   <div>
                     <a href={r.url} target="blank">
                       {" "}

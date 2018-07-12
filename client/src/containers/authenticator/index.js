@@ -18,6 +18,8 @@ export default class Login extends Component {
 
     const { showSignIn } = this.state
     return (
+      <React.Fragment>
+      <div className="stripe" />
       <div className="widget">
       <Authenticator hideDefault>
       {
@@ -34,10 +36,10 @@ export default class Login extends Component {
               >
         <Grid.Column style={{ maxWidth: 450 }}>
         <Message>
-          New to us? <a onClick={() => this.switchState(false)}>Sign Up</a>
+          New to us? <a onClick={() => this.switchState(false)} style={{cursor: 'pointer'}}>Sign Up</a>
         </Message>
         <Message>
-         Have an account? <a onClick={() => this.switchState(true)}>Sign In</a>
+         Have an account? <a onClick={() => this.switchState(true)} style={{cursor: 'pointer'}}>Sign In</a>
         </Message>
         <Message> 
           <a href='/forgotpassword' style={{cursor: 'pointer'}}>Forgot Password?</a>
@@ -46,6 +48,7 @@ export default class Login extends Component {
         </Grid>
       </Authenticator>
       </div>
+      </React.Fragment>
     );
   }
 }

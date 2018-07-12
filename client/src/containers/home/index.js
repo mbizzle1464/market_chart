@@ -12,22 +12,23 @@ import { withRouter } from "react-router-dom";
 const Home = props => {
   return (
     <React.Fragment>
-      <div className="widget">
-        <h1>Search Companies</h1>
-        <div className="search-container">
-          <input
-            type="text"
-            className="stock-search"
-            id="stock-search"
-            placeholder="MSFT"
-          />
-          <button
-            className="stock-search-button"
-            id="stock-search-button"
-            onClick={props.changePage}
-          >
+      <div className="stripe" />
+        <div className="widget">
+          <h1>Search Companies</h1>
+          <div className="search-container">
+            <input
+              type="text"
+              className="stock-search"
+              id="stock-search"
+              placeholder="MSFT"
+            />
+              <button
+                className="stock-search-button"
+                id="stock-search-button"
+                onClick={props.changePage}
+              >
             <FontAwesomeIcon icon="search" />
-          </button>
+            </button>
         </div>
       </div>
       <div>

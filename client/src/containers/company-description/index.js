@@ -23,15 +23,15 @@ const Description = props => {
             <p className="summary">{props.description}</p>
             <div>
               <div className="ceo">
-                <span className="parameter-name">CEO </span>
+                <span className="parameter-name">CEO: </span>
                 {props.ceo}
               </div>
               <div className="sector">
-                <span className="parameter-name">Sector </span>
+                <span className="parameter-name">Sector: </span>
                 {props.sector}
               </div>
               <div className="industry">
-                <span className="parameter-name">Industry </span>
+                <span className="parameter-name">Industry: </span>
                 {props.industry}
               </div>
             </div>
