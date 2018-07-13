@@ -6,8 +6,7 @@ import { getIexData } from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
 const Home = props => {
   const currentCompany = props.path.split("/");
-
-  if (!props.website) {
+  if (!props.companyReceived) {
     props.getIexData(currentCompany[2], "book");
     props.getIexData(currentCompany[2], "company");
     return <p>No Data</p>;
@@ -45,7 +44,8 @@ const Home = props => {
 const mapStateToProps = state => ({
   quote: state.PullStocks.quote,
   path: state.routing.location.pathname,
-  website: state.PullStocks.website
+  website: state.PullStocks.website,
+  companyReceived: state.PullStocks.companyReceived
   // description: state.PullStocks.description,
   // ceo: state.PullStocks.ceo,
   // sector: state.PullStocks.sector,

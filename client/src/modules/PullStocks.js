@@ -2,6 +2,7 @@ import axios from "axios";
 import io from "socket.io-client";
 import numeral from "numeral";
 import moment from "moment";
+import company from "../containers/company/index";
 
 export const RECEIVE_BOOK = "PullStocks/RECEIVE_BOOK";
 export const RECEIVE_SOCKET = "PullStocks/RECEIVE_SOCKET";
@@ -25,7 +26,9 @@ const initialState = {
   website: "",
   awaitingState: true,
   awaitingChart: true,
-  awaitingPortfolio: false
+  awaitingPortfolio: false,
+  companyReceived: false,
+  currentCompany: ""
 };
 
 // export default (state = initialState, action) => {
@@ -72,6 +75,7 @@ export default (state = initialState, action) => {
         let ceo = action.payload[0].CEO;
         let sector = action.payload[0].sector;
         let industry = action.payload[0].industry;
+        let companyReceived = true;
 
         return {
           ...state,
@@ -79,7 +83,8 @@ export default (state = initialState, action) => {
           description,
           ceo,
           sector,
-          industry
+          industry,
+          companyReceived
         };
       }
     case RECEIVE_PORTFOLIO:
@@ -141,12 +146,10 @@ export default (state = initialState, action) => {
         };
       }
     case RELOAD_COMPANY:
-      init();
-      let awaitingState = true;
-      console.log("awaiting state" + awaitingState);
+      let companyReceived = false;
       return {
         ...state,
-        awaitingState
+        companyReceived
       };
     case RECEIVE_CHART:
       if (!action.payload) {
@@ -188,9 +191,14 @@ export default (state = initialState, action) => {
         let shortInterest = action.payload[0].shortInterest;
         let dividendRate = action.payload[0].dividendRate;
         let dividendYield = action.payload[0].dividendYield;
-        let exDividendDate = action.payload[0].exDividendDate;
+        let exDividendDate = moment(
+          moment(action.payload[0].exDividendDate, "YYYY-MM-DD")
+        ).format("MM-DD-YYYY");
         let latestEPS = numeral(action.payload[0].latestEPS).format("$0.00a");
-        let latestEPSDate = action.payload[0].latestEPSDate;
+        let latestEPSDate = moment(
+          moment(action.payload[0].latestEPSDate, "YYYY-MM-DD")
+        ).format("MM-DD-YYYY");
+        // let latestEPSDate = action.payload[0].latestEPSDate;
         let sharesOutstanding = action.payload[0].sharesOutstanding;
         let consensusEPS = action.payload[0].consensusEPS;
         let numberOfEstimates = action.payload[0].numberOfEstimates;
@@ -381,12 +389,19 @@ export default (state = initialState, action) => {
         let EPSSurpriseDollar = numeral(
           action.payload[0].earnings[0].EPSSurpriseDollar
         ).format("$0.00a");
-        let EPSReportDate = action.payload[0].earnings[0].EPSReportDate;
+        let EPSReportDate = moment(
+          moment(action.payload[0].earnings[0].EPSReportDate, "YYYY-MM-DD")
+        ).format("MM-DD-YYYY");
+        // let EPSReportDate = action.payload[0].earnings[0].EPSReportDate;
         let fiscalPeriod = action.payload[0].earnings[0].fiscalPeriod;
         let fiscalEndDate = action.payload[0].earnings[0].fiscalEndDate;
         let yearAgo = action.payload[0].earnings[0].yearAgo;
-        let yearAgoChangePercent =
-          action.payload[0].earnings[0].yearAgoChangePercent;
+        // let yearAgoChangePercent =
+        //   action.payload[0].earnings[0].yearAgoChangePercent;
+        let yearAgoChangePercent = numeral(
+          action.payload[0].earnings[0].yearAgoChangePercent
+        ).format("0.00%");
+
         let estimatedChangePercent =
           action.payload[0].earnings[0].estimatedChangePercent;
         let symbolId = action.payload[0].earnings[0].symbolId;
@@ -418,11 +433,14 @@ const url = `https://api.iextrading.com/1.0/stock/`;
 export const getIexData = (currentCompany, requestType) => async dispatch => {
   const res = await axios.get(`${url}${currentCompany}/${requestType}`);
   switch (requestType) {
-    case "reload":
-      dispatch({
-        type: RELOAD_COMPANY
-      });
-      break;
+    // case "reload":
+    //   dispatch({
+    //     type: RELOAD_COMPANY,
+    //     payload: {
+    //       test: "payload"
+    //     }
+    //   });
+    //   break;
     case "book":
       dispatch({
         type: RECEIVE_BOOK,
@@ -478,6 +496,13 @@ export const getIexData = (currentCompany, requestType) => async dispatch => {
       });
       break;
   }
+};
+
+export const reload = () => dispatch => {
+  dispatch({
+    type: RELOAD_COMPANY,
+    payload: "payload test"
+  });
 };
 
 export const getPortfolio = user_id => async dispatch => {

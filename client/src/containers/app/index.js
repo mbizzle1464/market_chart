@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, withRouter} from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Amplify from "aws-amplify";
 import Home from "../home";
 import About from "../about";
@@ -24,6 +24,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Signout from "../signout";
 import ForgotPasswordForm from "../forgotpasswordform";
 import Header from "../header";
+import addWatchList from "../modals/add-watch-list";
 
 library.add(faSearch);
 //Amplify.Logger.LOG_LEVEL = "DEBUG";
@@ -69,6 +70,7 @@ const App = () => (
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/privacy" component={PrivacyPolicy} />
         <Route exact path="/contact" component={ContactUs} />
+        <Route exact path="/uitest" component={addWatchList} />
       </Switch>
 
       <Footer />

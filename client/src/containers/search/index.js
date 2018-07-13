@@ -4,37 +4,36 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 // import { getData } from "../../modules/PullStocks";
 import { loadCompanyPage } from "../../modules/Home.js";
-import { getIexData } from "../../modules/PullStocks.js";
+import { getIexData, reload } from "../../modules/PullStocks.js";
 import News from "../news";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router-dom";
-import Search from "../search";
 
-const Home = props => {
+const Search = props => {
+  const handleClick = () => {
+    props.reload();
+    props.changePage();
+  };
   return (
     <React.Fragment>
-      {/* <div className="stripe" />
-        <div className="widget">
-          <h1>Search Companies</h1>
-          <div className="search-container">
-            <input
-              type="text"
-              className="stock-search"
-              id="stock-search"
-              placeholder="MSFT"
-            />
-              <button
-                className="stock-search-button"
-                id="stock-search-button"
-                onClick={props.changePage}
-              >
+      <div className="stripe" />
+      <div className="widget">
+        <h1>Search Companies</h1>
+        <div className="search-container">
+          <input
+            type="text"
+            className="stock-search"
+            id="stock-search"
+            placeholder="MSFT"
+          />
+          <button
+            className="stock-search-button"
+            id="stock-search-button"
+            onClick={handleClick}
+          >
             <FontAwesomeIcon icon="search" />
-            </button>
+          </button>
         </div>
-      </div> */}
-      <Search />
-      <div>
-        <News />
       </div>
     </React.Fragment>
   );
@@ -42,14 +41,18 @@ const Home = props => {
 
 const mapStateToProps = state => ({});
 
-function getInputText() {
+const getInputText = props => {
   const stockSymbol = document.getElementById("stock-search").value;
-  getIexData("", "reload");
+  reload();
+  console.log("does this work?");
   return `/companies/${stockSymbol}`;
-}
+};
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
+      getIexData,
+      reload,
       changePage: () => push(getInputText())
     },
     dispatch
@@ -59,5 +62,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Home)
+  )(Search)
 );

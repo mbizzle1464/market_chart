@@ -8,7 +8,22 @@ class News extends React.Component {
   componentDidMount() {
     axios.get(`https://api.iextrading.com/1.0/stock/market/news/`).then(res => {
       const results = res.data;
-      console.log(results); 
+      console.log(results);
+      results.map((r, index) => {
+        results[index].headline = results[index].headline.replace(
+          "&apos;",
+          "'"
+        );
+      });
+      results.map((r, index) => {
+        results[index].headline = results[index].headline.replace("&amp;", "&");
+      });
+      results.map((r, index) => {
+        results[index].summary = results[index].summary.replace("&apos;", "'");
+      });
+      results.map((r, index) => {
+        results[index].summary = results[index].summary.replace("&amp;", "&");
+      });
       this.setState({
         results
       });
@@ -17,7 +32,7 @@ class News extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <div className="stripe" />
+        <div className="stripe" />
         <div className="widget">
           <h1>Market News</h1>
           <div>
