@@ -95,6 +95,8 @@ class ForgotPasswordForm extends AuthPiece {
     render() {
         const { delivery } = this.state;
         return (
+          <React.Fragment>
+            <div className="stripe" />
             <div className='widget'>
               {/*
                 Heads up! The styles below are necessary for the correct render of this example.
@@ -123,6 +125,8 @@ class ForgotPasswordForm extends AuthPiece {
                 </Grid.Column>
               </Grid>
             </div>
+            </React.Fragment>
+
         )
     }
 }
