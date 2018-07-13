@@ -11,17 +11,24 @@ state = {
     password: '',
     showConfirmation: false,
     user: {},
-    authCode: ''
+    authCode: '', 
+    loggedIn: false
   }
+
+  
   onChange = (key, value) => {
     this.setState({
-      [key]: value
+      [key]: value, 
     })
+ //   console.log(value); 
   }
   signIn = () => {
     Auth.signIn(this.state.username, this.state.password)
       .then(user => {
-        this.setState({ user, showConfirmation: true })
+        this.setState({
+          user,
+          showConfirmation: true
+        })
       })
       .catch(err => this.error(err));
 }
@@ -29,11 +36,13 @@ state = {
     const { history } = this.props
     Auth.confirmSignIn(this.state.user, this.state.authCode, this.state.user.challengeName)
       .then(user => {
+        this.setState({ loggedIn: true})
         history.push('/mystocks')
       })
       .catch(err => this.error(err));
   }
     render() {
+       console.log(this.state);
         return (
       <div>
         {
