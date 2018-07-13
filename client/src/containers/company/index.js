@@ -4,7 +4,16 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getIexData } from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+
 const Home = props => {
+  const loadAddWatchList = () => {
+    console.log("Add Watch List Item");
+    props.changePage("/addtowatchlist");
+  };
+  const loadAddPortfolio = () => {
+    props.changePagePortfolio("/addstock");
+  };
   const currentCompany = props.path.split("/");
   if (!props.companyReceived) {
     props.getIexData(currentCompany[2], "book");
@@ -35,6 +44,14 @@ const Home = props => {
               {props.quote.changePercent})
             </div>
           </div>
+          <div>
+            <button className="mainButton" onClick={loadAddWatchList}>
+              Add to Watch List
+            </button>
+            <button className="left mainButton" onClick={loadAddPortfolio}>
+              Add to My Portfolio
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -56,7 +73,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getIexData,
-      changePage: () => push("/about-us")
+      changePage: page => push(page),
+      changePagePortfolio: page => push(page)
     },
     dispatch
   );

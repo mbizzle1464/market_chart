@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import store, { history } from "./store";
 import App from "./containers/app";
 import "semantic-ui-css/semantic.min.css";
+import "./bootstrap.css";
 import "./index.css";
 
 const target = document.querySelector("#root");

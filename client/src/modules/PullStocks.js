@@ -16,6 +16,7 @@ export const RECEIVE_PEERS = "PullStocks/RECEIVE_PEERS";
 export const RECEIVE_CHART = "PullStocks/RECEIVE_CHART";
 export const RELOAD_COMPANY = "PullStocks/RELOAD_COMPANY";
 export const RECEIVE_PORTFOLIO = "PullStocks/RECEIVE_PORTFOLIO";
+export const TOGGLE_MODAL = "PullStocks/TOGGLE_MODAL";
 
 const initialState = {
   quote: [],
@@ -28,7 +29,8 @@ const initialState = {
   awaitingChart: true,
   awaitingPortfolio: false,
   companyReceived: false,
-  currentCompany: ""
+  currentCompany: "",
+  modal: false
 };
 
 // export default (state = initialState, action) => {
@@ -150,6 +152,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         companyReceived
+      };
+    case TOGGLE_MODAL:
+      let modal = !state.modal;
+      return {
+        ...state,
+        modal
       };
     case RECEIVE_CHART:
       if (!action.payload) {
@@ -500,8 +508,13 @@ export const getIexData = (currentCompany, requestType) => async dispatch => {
 
 export const reload = () => dispatch => {
   dispatch({
-    type: RELOAD_COMPANY,
-    payload: "payload test"
+    type: RELOAD_COMPANY
+  });
+};
+
+export const toggle = () => dispatch => {
+  dispatch({
+    type: TOGGLE_MODAL
   });
 };
 
