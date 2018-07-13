@@ -577,6 +577,16 @@ th {
   color: white;
   border: none;
 }
+.mainButton {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #ff9b04;
+  border: 1px solid #ff9b04 !important;
+  color: white;
+  border: none;
+}
 .stock-search {
   padding-left: 20px;
   padding-right: 20px;
@@ -671,4 +681,7 @@ div.ui.fluid.left.icon.input input {
 }
 .tv-embed-widget-wrapper__body {
   border-radius: 0 !important;
+}
+.left {
+  margin-left: 20px;
 }

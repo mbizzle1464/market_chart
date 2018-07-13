@@ -5,12 +5,16 @@ import { connect } from "react-redux";
 import { getIexData } from "../../../modules/PullStocks";
 import Company from "../../company";
 import { checkSign, setColor } from "../../../helpers/helpers";
-const addWatchList = props => {
+const addStock = props => {
+  const handleClick = () => {
+    console.log("Click Works - Add Portfolio");
+  };
   return (
     <React.Fragment>
       <div class="widget">
-        <h1>We've added {props.symbol} to your watch list</h1>
-        <a href="/watchlist">View my watchlist</a>
+        <h1>How Many Shares Do You Own?</h1>
+        <input />
+        <button onClick={handleClick}>Add Shares and Save</button>
       </div>
     </React.Fragment>
   );
@@ -39,4 +43,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(addWatchList);
+)(addStock);

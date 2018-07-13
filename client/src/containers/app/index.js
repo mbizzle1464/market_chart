@@ -25,6 +25,7 @@ import Signout from "../signout";
 import ForgotPasswordForm from "../forgotpasswordform";
 import Header from "../header";
 import addWatchList from "../modals/add-watch-list";
+import addStock from "../modals/add-portfolio";
 
 library.add(faSearch);
 //Amplify.Logger.LOG_LEVEL = "DEBUG";
@@ -70,7 +71,8 @@ const App = () => (
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/privacy" component={PrivacyPolicy} />
         <Route exact path="/contact" component={ContactUs} />
-        <Route exact path="/uitest" component={addWatchList} />
+        <Route exact path="/addtowatchlist" component={addWatchList} />
+        <Route exact path="/addstock" component={addStock} />
       </Switch>
 
       <Footer />
