@@ -48,7 +48,10 @@ const Home = props => {
             <button className="mainButton" onClick={loadAddWatchList}>
               Add to Watch List
             </button>
-            <button className="left mainButton" onClick={loadAddPortfolio}>
+            <button
+              className="add-left-margin mainButton"
+              onClick={loadAddPortfolio}
+            >
               Add to My Portfolio
             </button>
           </div>
