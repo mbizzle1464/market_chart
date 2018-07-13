@@ -28,6 +28,8 @@ const MyStocks = props => {
     props.getPortfolio(1);
     return <p>no data</p>;
   } else {
+    props.getIexData("msft", "book");
+    props.getIexData("msft", "company");
     return (
       <div>
         <div className="widget">
@@ -134,6 +136,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getPortfolio,
+      getIexData,
       changePage: () => push("/about-us")
     },
     dispatch
