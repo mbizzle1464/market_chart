@@ -400,10 +400,10 @@ export default (state = initialState, action) => {
         //   action.payload[0].earnings[0].yearAgoChangePercent;
         let yearAgoChangePercent = numeral(
           action.payload[0].earnings[0].yearAgoChangePercent
-        ).format("0.00%");
+        ).format("0.00");
 
-        let estimatedChangePercent =
-          action.payload[0].earnings[0].estimatedChangePercent;
+        let estimatedChangePercent = numeral(
+          action.payload[0].earnings[0].estimatedChangePercent).format("0.00");
         let symbolId = action.payload[0].earnings[0].symbolId;
 
         return {

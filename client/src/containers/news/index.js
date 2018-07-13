@@ -8,7 +8,7 @@ class News extends React.Component {
   componentDidMount() {
     axios.get(`https://api.iextrading.com/1.0/stock/market/news/`).then(res => {
       const results = res.data;
-      console.log(results);
+      //console.log(results);
       results.map((r, index) => {
         results[index].headline = results[index].headline.replace(
           "&apos;",
