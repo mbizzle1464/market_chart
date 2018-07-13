@@ -28,52 +28,56 @@ const MyStocks = props => {
     props.getPortfolio(1);
     return <p>no data</p>;
   } else {
-    props.getIexData("msft", "book");
-    props.getIexData("msft", "company");
-    return (
-      <div>
-        <div className="widget">
-          {/* <h1>Welcome, {this.state.username}</h1> */}
-          <h1>
-            Testing Should be AAPL: {props.portfolio.portfolio.stocks[0].symbol}
-          </h1>
-          <div className="search-container" />
-        </div>
-        <div className="company-quick-view widget">
-          <div className="company-quick-view_basic widget_content-area">
-            <table>
-              <thead>
-                <tr>
-                  <th>Stock</th>
-                  <th>Shares</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>MSFT</td>
-                  <td>24</td>
-                  <td>187.3</td>
-                </tr>
-                <tr>
-                  <td>MSFT</td>
-                  <td>24</td>
-                  <td>187.3</td>
-                </tr>
-                <tr>
-                  <td>MSFT</td>
-                  <td>24</td>
-                  <td>187.3</td>
-                </tr>
-              </tbody>
-            </table>
+    if (props.receivedPortfolioIex) {
+      props.getIexData("msft", "book");
+      props.getIexData("msft", "company");
+    } else {
+      return (
+        <div>
+          <div className="widget">
+            {/* <h1>Welcome, {this.state.username}</h1> */}
+            <h1>
+              Testing Should be AAPL:{" "}
+              {props.portfolio.portfolio.stocks[0].symbol}
+            </h1>
+            <div className="search-container" />
+          </div>
+          <div className="widget">
+            <div className="company-quick-view_basic widget_content-area">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stock</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MSFT</td>
+                    <td>24</td>
+                    <td>187.3</td>
+                  </tr>
+                  <tr>
+                    <td>MSFT</td>
+                    <td>24</td>
+                    <td>187.3</td>
+                  </tr>
+                  <tr>
+                    <td>MSFT</td>
+                    <td>24</td>
+                    <td>187.3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <News />
           </div>
         </div>
-        <div>
-          <News />
-        </div>
-      </div>
-    );
+      );
+    }
   }
 };
 
