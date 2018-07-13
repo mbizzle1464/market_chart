@@ -30,7 +30,8 @@ const initialState = {
   awaitingPortfolio: false,
   companyReceived: false,
   currentCompany: "",
-  modal: false
+  modal: false,
+  portfolio: [{}]
 };
 
 // export default (state = initialState, action) => {
@@ -95,6 +96,7 @@ export default (state = initialState, action) => {
       } else {
         init();
         let portfolio = action.payload[0];
+        portfolio.portfolio.stocks[0].currentPrice = 2;
         let awaitingPortfolio = true;
         return {
           ...state,
