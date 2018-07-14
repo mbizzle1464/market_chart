@@ -26,7 +26,7 @@ import ForgotPasswordForm from "../forgotpasswordform";
 import Header from "../header";
 import addWatchList from "../modals/add-watch-list";
 import addStock from "../modals/add-portfolio";
-
+import CoporatePage from "../corporate-page";
 library.add(faSearch);
 //Amplify.Logger.LOG_LEVEL = "DEBUG";
 Amplify.configure(config);
@@ -45,7 +45,7 @@ const App = () => (
             </div>
           )}
         />
-        <Route
+        {/* <Route
           exact
           path="/companies/:companyId"
           component={() => (
@@ -53,14 +53,15 @@ const App = () => (
               <CompanyDetails />
               <CompanyChart />
               <CompanyDescription />
-              {/* <CompanyNews /> */}
+              <CompanyNews />}
               <CompanyFinancials />
               <CompanyStats />
               <CompanyEarnings />
               <CompanyPeers />
             </div>
           )}
-        />
+        /> */}
+        <Route exact path="/companies/:companyId" component={CoporatePage} />
         <Route exact path="/about" component={About} />
         <Route exact path="/auth" component={Authenticator} />
         <Route exact path="/forgotpassword" component={ForgotPasswordForm} />

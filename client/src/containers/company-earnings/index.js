@@ -11,7 +11,7 @@ const Description = props => {
     props.getIexData(currentCompany[2], "earnings");
   }
   return (
-    <div>
+    <div className="height-100">
       <div className="stripe" />
       <div className="widget">
         <h1>Earnings</h1>
@@ -29,7 +29,10 @@ const Description = props => {
             <div className="financial-data">{props.estimatedEPS}</div>
           </div>
           <div className="announceTime">
-            <div className = "financial-label">Announce Time BTO(Before open), DMT(During trading), AMC(After close) </div>
+            <div className="financial-label">
+              Announce Time BTO(Before open), DMT(During trading), AMC(After
+              close){" "}
+            </div>
             <div className="financial-data">{props.announceTime}</div>
           </div>
           <div className="numberOfEstimates">
@@ -57,12 +60,18 @@ const Description = props => {
             <div className="financial-data">${props.yearAgo}</div>
           </div>
           <div className="yearAgoChangePercent">
-            <div className="financial-label">EPS Change of Percentage a Year Ago</div>
+            <div className="financial-label">
+              EPS Change of Percentage a Year Ago
+            </div>
             <div className="financial-data">{props.yearAgoChangePercent}%</div>
           </div>
           <div className="estimatedChangePercent">
-            <div className="financial-label">Estimated EPS Change of Percentage </div>
-            <div className="financial-data">{props.estimatedChangePercent}% </div>
+            <div className="financial-label">
+              Estimated EPS Change of Percentage{" "}
+            </div>
+            <div className="financial-data">
+              {props.estimatedChangePercent}%{" "}
+            </div>
           </div>
           <div className="symbolId">
             <div className="financial-label">IEX Stock Symbol</div>

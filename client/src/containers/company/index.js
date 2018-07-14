@@ -44,7 +44,7 @@ const Home = props => {
               {props.quote.changePercent})
             </div>
           </div>
-          <div>
+          <div className="add-buttons">
             <button className="mainButton" onClick={loadAddWatchList}>
               Add to Watch List
             </button>

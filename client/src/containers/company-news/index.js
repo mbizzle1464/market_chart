@@ -12,7 +12,7 @@ const News = props => {
     return <p>no data</p>;
   } else {
     return (
-      <div>
+      <div className="height-100">
         <div className="stripe" />
         <div className="widget news">
           <h1>News</h1>

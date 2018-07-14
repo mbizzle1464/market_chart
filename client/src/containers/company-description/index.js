@@ -12,7 +12,7 @@ const Description = props => {
     props.getIexData(currentCompany[2], "logo");
   }
   return (
-    <div>
+    <div className="height-100">
       <div className="stripe" />
       <div className="widget">
         <div className="company-description">

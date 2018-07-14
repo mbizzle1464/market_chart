@@ -11,7 +11,7 @@ const Description = props => {
     props.getIexData(currentCompany[2], "stats");
   }
   return (
-    <div>
+    <div className="height-100">
       <div className="stripe" />
       <div className="widget">
         <h1>Key Stats</h1>
@@ -53,7 +53,9 @@ const Description = props => {
             <div className="financial-data">{props.exDividendDate}</div>
           </div>
           <div className="latestEPS">
-            <div className="financial-label">Latest Earn Profit Share (EPS)</div>
+            <div className="financial-label">
+              Latest Earn Profit Share (EPS)
+            </div>
             <div className="financial-data">{props.latestEPS}</div>
           </div>
           <div className="latestEPSDate">

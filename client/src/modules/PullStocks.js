@@ -17,7 +17,8 @@ export const RECEIVE_CHART = "PullStocks/RECEIVE_CHART";
 export const RELOAD_COMPANY = "PullStocks/RELOAD_COMPANY";
 export const RECEIVE_PORTFOLIO = "PullStocks/RECEIVE_PORTFOLIO";
 export const TOGGLE_MODAL = "PullStocks/TOGGLE_MODAL";
-
+export const RECEIVE_PORTFOLIO_DESCRIPTION =
+  "PullStocks/RECEIVE_PORTFOLIO_DESCRIPTION";
 const initialState = {
   quote: [],
   price: "",
@@ -31,7 +32,8 @@ const initialState = {
   companyReceived: false,
   currentCompany: "",
   modal: false,
-  portfolio: [{}]
+  portfolio: [{}],
+  receivedPortfolioIex: false
 };
 
 // export default (state = initialState, action) => {
@@ -90,13 +92,30 @@ export default (state = initialState, action) => {
           companyReceived
         };
       }
+    case RECEIVE_PORTFOLIO_DESCRIPTION:
+      if (!action.payload) {
+        return [...state];
+      } else {
+        init();
+        let test = action.payload[0];
+        let portfolio = state.portfolio;
+        portfolio.portfolio.stocks.map((stock, index) => {
+          stock.currentPrice =
+            action.payload[0][stock.symbol].quote.latestPrice;
+        });
+        let receivedPortfolioIex = true;
+        return {
+          ...state,
+          portfolio,
+          receivedPortfolioIex
+        };
+      }
     case RECEIVE_PORTFOLIO:
       if (!action.payload) {
         return [...state];
       } else {
         init();
         let portfolio = action.payload[0];
-        portfolio.portfolio.stocks[0].currentPrice = 2;
         let awaitingPortfolio = true;
         return {
           ...state,
@@ -413,7 +432,8 @@ export default (state = initialState, action) => {
         ).format("0.00");
 
         let estimatedChangePercent = numeral(
-          action.payload[0].earnings[0].estimatedChangePercent).format("0.00");
+          action.payload[0].earnings[0].estimatedChangePercent
+        ).format("0.00");
         let symbolId = action.payload[0].earnings[0].symbolId;
 
         return {
@@ -520,11 +540,13 @@ export const toggle = () => dispatch => {
   });
 };
 
-export const getPortfolio = user_id => async dispatch => {
-  const res = await axios.get(`/assets/data/portfolio.json`);
+export const getDescriptionPortfolio = symbols => async dispatch => {
+  const response = await axios.get(
+    `${url}market/batch?symbols=${symbols}&types=quote,news,chart&range=1m&last=5`
+  );
   dispatch({
-    type: RECEIVE_PORTFOLIO,
-    payload: [res.data]
+    type: RECEIVE_PORTFOLIO_DESCRIPTION,
+    payload: [response.data]
   });
 };
 
@@ -536,3 +558,11 @@ export const init = currentCompany => dispatch => {
 };
 
 export const emit = (type, payload) => socket.emit("subscribe", "aapl");
+
+export const getPortfolio = user_id => async dispatch => {
+  const res = await axios.get(`/assets/data/portfolio.json`);
+  dispatch({
+    type: RECEIVE_PORTFOLIO,
+    payload: [res.data]
+  });
+};

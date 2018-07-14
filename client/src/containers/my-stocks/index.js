@@ -2,7 +2,11 @@ import React from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getIexData, getPortfolio } from "../../modules/PullStocks";
+import {
+  getIexData,
+  getPortfolio,
+  getDescriptionPortfolio
+} from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
 import { Auth } from "aws-amplify";
 import News from "../news";
@@ -28,22 +32,22 @@ const MyStocks = props => {
     props.getPortfolio(1);
     return <p>no data</p>;
   } else {
-    if (props.receivedPortfolioIex) {
-      props.getIexData("msft", "book");
-      props.getIexData("msft", "company");
+    if (!props.receivedPortfolioIex) {
+      props.getDescriptionPortfolio(
+        props.portfolio.portfolio.stocks.map(stock => {
+          return stock.symbol;
+        })
+      );
+      return <div>No Data</div>;
+      // props.getIexData("msft", "company");
     } else {
       return (
         <div>
-          <div className="stripe" />
           <div className="widget">
             {/* <h1>Welcome, {this.state.username}</h1> */}
-            <h1>
-              Testing Should be AAPL:{" "}
-              {props.portfolio.portfolio.stocks[0].symbol}
-            </h1>
+            <h1>My Portfolio</h1>
             <div className="search-container" />
           </div>
-          <div className="stripe" />
           <div className="widget">
             <div className="company-quick-view_basic widget_content-area">
               <table>
@@ -55,24 +59,21 @@ const MyStocks = props => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>MSFT</td>
-                    <td>24</td>
-                    <td>187.3</td>
-                  </tr>
-                  <tr>
-                    <td>MSFT</td>
-                    <td>24</td>
-                    <td>187.3</td>
-                  </tr>
-                  <tr>
-                    <td>MSFT</td>
-                    <td>24</td>
-                    <td>187.3</td>
-                  </tr>
+                  {props.portfolio.portfolio.stocks.map(stock => {
+                    return (
+                      <tr>
+                        <td>{stock.symbol}</td>
+                        <td>{stock.sharesOwned}</td>
+                        <td>{stock.currentPrice}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
+          </div>
+          <div>
+            <News />
           </div>
         </div>
       );
@@ -132,13 +133,15 @@ const MyStocks = props => {
 const mapStateToProps = state => ({
   awaitingPortfolio: state.PullStocks.awaitingPortfolio,
   path: state.routing.location.pathname,
-  portfolio: state.PullStocks.portfolio
+  portfolio: state.PullStocks.portfolio,
+  receivedPortfolioIex: state.PullStocks.receivedPortfolioIex
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getPortfolio,
+      getDescriptionPortfolio,
       getIexData,
       changePage: () => push("/about-us")
     },
