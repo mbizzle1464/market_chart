@@ -43,11 +43,13 @@ const MyStocks = props => {
     } else {
       return (
         <div>
+          <div className="stripe" />
           <div className="widget">
             {/* <h1>Welcome, {this.state.username}</h1> */}
             <h1>My Portfolio</h1>
             <div className="search-container" />
           </div>
+          <div className="stripe" />
           <div className="widget">
             <div className="company-quick-view_basic widget_content-area">
               <table>
