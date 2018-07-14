@@ -34,6 +34,7 @@ const MyStocks = props => {
     } else {
       return (
         <div>
+          <div className="stripe" />
           <div className="widget">
             {/* <h1>Welcome, {this.state.username}</h1> */}
             <h1>
@@ -42,6 +43,7 @@ const MyStocks = props => {
             </h1>
             <div className="search-container" />
           </div>
+          <div className="stripe" />
           <div className="widget">
             <div className="company-quick-view_basic widget_content-area">
               <table>
@@ -71,9 +73,6 @@ const MyStocks = props => {
                 </tbody>
               </table>
             </div>
-          </div>
-          <div>
-            <News />
           </div>
         </div>
       );

@@ -11,6 +11,7 @@ const addStock = props => {
   };
   return (
     <React.Fragment>
+      <div className="stripe" />
       <div class="widget">
         <h1>How Many Shares Do You Own?</h1>
         <input />
