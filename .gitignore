@@ -1,5 +1,7 @@
 node_modules
 
+secrets.js
+
 #awsmobilejs
 appsync-info.json
 aws-info.json
