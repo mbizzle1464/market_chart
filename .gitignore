@@ -1,6 +1,6 @@
 node_modules
 
-secrets.js  
+/secrets.js  
 
 #awsmobilejs
 appsync-info.json
