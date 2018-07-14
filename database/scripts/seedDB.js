@@ -11,7 +11,7 @@ mongoose.connect(
 
 const portfolioSeed = [
   {
-    username: "esandoval",
+    username: "test",
     stocks: [
       {
         symbol: "ZNGA",
@@ -29,7 +29,7 @@ const portfolioSeed = [
     ],
   },
   {
-    username: "ese",
+    username: "testone",
     stocks: [
       {
         symbol: "AAPL",

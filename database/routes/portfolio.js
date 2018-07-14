@@ -4,7 +4,7 @@ const db = require("../models");
 
 module.exports = function(app){
     // testing purposes 
-    app.get("/", function(req, res) {
+    app.get("/test", function(req, res) {
         res.send("Hello World");
     });
 
@@ -32,34 +32,41 @@ module.exports = function(app){
     });
 
     // Add stocks to stocks array
-    app.post("portfolio/:username/:symbol/:shares/:price", function(req, res) {
-        db.Portfolio.update(
-            { username : req.params.username },
-            { $push: { 
-                stocks : {
+    app.post("/portfolio/:username/:symbol/:owned/:price", function(req, res) {
+        // console.log(req);
+        db.Portfolio.findOneAndUpdate(
+            { username : req.params.username }, 
+            { $push: { stocks : {
                 symbol: req.params.symbol,
-                sharesOwned: req.params.shares,
-                purchasePrice: req.params.price} 
-            }})
+                sharesOwned: req.params.owned,
+                purchasePrice: req.params.price
+            } }}, 
+            function (error, success) {
+                console.log(error,success);
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                    res.send(success);
+                }
+        });
+        // res.send(req);
     });
     // Add stocks to watchlist array
-
-    // Register a new user portfolio
-
-    // Delete Portfolio
-
-
-    //create portfolio
-    // app.post("/api/portfolio/create",portfolioController.create);
-    // find portfolio by Id
-    // app.get("api/portfolio/:id",portfolioController.findById);
-    // UPDATE PORTFOLIO gets it by ID
-    // app.put("api/portfolio/:id", portfolioController.update);
-    // DELETE PORTFOLIO 
-    // app.delete("api/portfolio/delete", portfolioController.remove);
-
-    //serving up react
-    // app.get("*",function(req,res){
-    //     res.sendFile(path.join(__dirname, "../../client/build/index.html"))
-    // });
+    app.post("/watchlist/:username/:symbol", function(req, res) {
+        // console.log(req);
+        db.Portfolio.findOneAndUpdate(
+            { username : req.params.username }, 
+            { $push: { watchlist : req.params.symbol }}, 
+            function (error, success) {
+                console.log(error,success);
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                    res.send(success);
+                }
+        });
+        // res.send(req);
+    });
 }
