@@ -11,6 +11,11 @@
         "symbol": "FB",
         "sharesOwned": 332,
         "currentPrice": 21.43
+      },
+      {
+        "symbol": "MSFT",
+        "sharesOwned": 21,
+        "currentPrice": 21.43
       }
     ]
   }
