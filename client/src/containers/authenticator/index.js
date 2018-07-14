@@ -12,6 +12,7 @@ export default class Login extends Component {
     this.setState({
       showSignIn
     })
+    console.log(showSignIn);  
   }
   
   render() {
