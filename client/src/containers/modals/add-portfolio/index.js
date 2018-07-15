@@ -16,11 +16,16 @@ const addStock = props => {
     let sharesOwned = this.name.value;
 
     axios
-      .post(`http://localhost:3000/portfolio`, {
-        symbol: props.symbol,
-        sharesOwned: sharesOwned,
-        currentPrice: props.latestPrice
-      })
+      .post(
+        `http://localhost:3001/portfolio/testone/${
+          props.symbol
+        }/${sharesOwned}/200`,
+        {
+          symbol: props.symbol,
+          sharesOwned: sharesOwned,
+          currentPrice: props.latestPrice
+        }
+      )
       .then(function(response) {
         console.log(response);
       })

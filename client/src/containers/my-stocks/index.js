@@ -34,7 +34,7 @@ const MyStocks = props => {
   } else {
     if (!props.receivedPortfolioIex) {
       props.getDescriptionPortfolio(
-        props.portfolio.portfolio.stocks.map(stock => {
+        props.portfolio[0].stocks.map(stock => {
           return stock.symbol;
         })
       );
@@ -61,7 +61,7 @@ const MyStocks = props => {
                   </tr>
                 </thead>
                 <tbody>
-                  {props.portfolio.portfolio.stocks.map(stock => {
+                  {props.portfolio[0].stocks.map(stock => {
                     return (
                       <tr>
                         <td>{stock.symbol}</td>

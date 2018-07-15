@@ -99,7 +99,7 @@ export default (state = initialState, action) => {
         init();
         let test = action.payload[0];
         let portfolio = state.portfolio;
-        portfolio.portfolio.stocks.map((stock, index) => {
+        portfolio[0].stocks.map((stock, index) => {
           stock.currentPrice =
             action.payload[0][stock.symbol].quote.latestPrice;
         });
@@ -560,7 +560,7 @@ export const init = currentCompany => dispatch => {
 export const emit = (type, payload) => socket.emit("subscribe", "aapl");
 
 export const getPortfolio = user_id => async dispatch => {
-  const res = await axios.get(`/assets/data/portfolio.json`);
+  const res = await axios.get(`http://localhost:3001/testone`);
   dispatch({
     type: RECEIVE_PORTFOLIO,
     payload: [res.data]

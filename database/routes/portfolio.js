@@ -3,7 +3,12 @@ const path = require("path");
 const db = require("../models");
 
 module.exports = function(app){
-    // testing purposes 
+    // testing purposes
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+      });
     app.get("/test", function(req, res) {
         res.send("Hello World");
     });
@@ -19,7 +24,7 @@ module.exports = function(app){
             }
         })
     });
-    
+
     app.get("/:username", function(req, res) {
         db.Portfolio.find({username : req.params.username}, function(error, found){
             if (error) {
@@ -35,12 +40,12 @@ module.exports = function(app){
     app.post("/portfolio/:username/:symbol/:owned/:price", function(req, res) {
         // console.log(req);
         db.Portfolio.findOneAndUpdate(
-            { username : req.params.username }, 
+            { username : req.params.username },
             { $push: { stocks : {
                 symbol: req.params.symbol,
                 sharesOwned: req.params.owned,
                 purchasePrice: req.params.price
-            } }}, 
+            } }},
             function (error, success) {
                 console.log(error,success);
                 if (error) {
@@ -56,8 +61,8 @@ module.exports = function(app){
     app.post("/watchlist/:username/:symbol", function(req, res) {
         // console.log(req);
         db.Portfolio.findOneAndUpdate(
-            { username : req.params.username }, 
-            { $push: { watchlist : req.params.symbol }}, 
+            { username : req.params.username },
+            { $push: { watchlist : req.params.symbol }},
             function (error, success) {
                 console.log(error,success);
                 if (error) {
