@@ -7,8 +7,6 @@ import {
   getPortfolio,
   getDescriptionPortfolio
 } from "../../modules/PullStocks";
-import { checkSign, setColor } from "../../helpers/helpers";
-import { Auth } from "aws-amplify";
 import News from "../news";
 
 // I wanted to see if this functionality of Private Route works and it did! This is why the other items are commented out.

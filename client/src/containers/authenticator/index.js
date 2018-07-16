@@ -3,7 +3,7 @@ import { Authenticator } from "aws-amplify-react";
 import { Grid, Message } from 'semantic-ui-react'
 import LoginForm from "../loginform";
 import RegisterForm from "../registerform";
-import ForgotPasswordForm from "../forgotpasswordform";
+import { Link } from "react-router-dom";  
 
 export default class Login extends Component {
   state = {
@@ -44,7 +44,7 @@ export default class Login extends Component {
          Have an account? <a onClick={() => this.switchState(true)} style={{cursor: 'pointer'}}>Sign In</a>
         </Message>
         <Message> 
-          <a href='/forgotpassword' component={ForgotPasswordForm} style={{cursor: 'pointer'}}>Forgot Password?</a>
+          <Link to="/forgotpassword" style={{cursor: 'pointer'}}>Forgot Password?</Link>
         </Message>
         </Grid.Column>
         </Grid>

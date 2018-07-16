@@ -5,6 +5,7 @@ import { Auth } from 'aws-amplify';
 import { AuthPiece } from 'aws-amplify-react';
 
 
+
 class ForgotPasswordForm extends AuthPiece {
     constructor(props) {
         super(props);

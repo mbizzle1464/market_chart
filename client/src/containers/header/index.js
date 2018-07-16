@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-let test = localStorage.getItem("aws-amplify-cacheCurSize");
 class Header extends React.Component {
   render() {
     return (
@@ -15,7 +14,6 @@ class Header extends React.Component {
           <ul className="nav-list">
             <li className="nav-list__item">
               <Link to="/about">About</Link>
-              {/* <a href="/about">About</a> */}
             </li>
             <li className="nav-list__item">
               <Link to="/mystocks">Portfolio</Link>
@@ -26,7 +24,6 @@ class Header extends React.Component {
             <li className="nav-list__item">
               <Link to="/signout">Sign Out</Link>
             </li>
-            {/* <li>{test}</li> */}
           </ul>
         </nav>
       </header>

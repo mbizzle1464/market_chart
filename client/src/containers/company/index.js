@@ -4,7 +4,6 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getIexData } from "../../modules/PullStocks";
 import { checkSign, setColor } from "../../helpers/helpers";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const Home = props => {
   const loadAddWatchList = () => {
