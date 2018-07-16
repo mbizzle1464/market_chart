@@ -3,6 +3,7 @@ import { Authenticator } from "aws-amplify-react";
 import { Grid, Message } from 'semantic-ui-react'
 import LoginForm from "../loginform";
 import RegisterForm from "../registerform";
+import ForgotPasswordForm from "../forgotpasswordform";
 
 export default class Login extends Component {
   state = {
@@ -43,7 +44,7 @@ export default class Login extends Component {
          Have an account? <a onClick={() => this.switchState(true)} style={{cursor: 'pointer'}}>Sign In</a>
         </Message>
         <Message> 
-          <a href='/forgotpassword' style={{cursor: 'pointer'}}>Forgot Password?</a>
+          <a href='/forgotpassword' component={ForgotPasswordForm} style={{cursor: 'pointer'}}>Forgot Password?</a>
         </Message>
         </Grid.Column>
         </Grid>
