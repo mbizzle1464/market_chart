@@ -14,6 +14,7 @@ const addStock = props => {
     console.log(props.symbol);
     // props.addPortfolioData(333, "jared", props.latestPrice, props.symbol);
     let sharesOwned = this.name.value;
+    console.log(sharesOwned); 
 
     axios
       .post(

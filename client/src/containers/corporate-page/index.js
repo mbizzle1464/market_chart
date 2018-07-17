@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import CompanyDetails from "../company";
 import CompanyDescription from "../company-description";
 import CompanyFinancials from "../company-financials";
@@ -7,7 +7,6 @@ import CompanyStats from "../company-stats";
 import CompanyEarnings from "../company-earnings";
 import CompanyPeers from "../company-peers";
 import CompanyChart from "../company-chart";
-import CompanyNews from "../company-news";
 
 class CorporatePage extends React.Component {
   render() {
@@ -21,7 +20,6 @@ class CorporatePage extends React.Component {
           <CompanyStats />
           <CompanyEarnings />
           <CompanyPeers />
-          {/* <CompanyNews /> */}
         </div>
       </React.Fragment>
     );

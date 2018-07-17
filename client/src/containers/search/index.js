@@ -3,9 +3,7 @@ import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 // import { getData } from "../../modules/PullStocks";
-import { loadCompanyPage } from "../../modules/Home.js";
 import { getIexData, reload } from "../../modules/PullStocks.js";
-import News from "../news";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router-dom";
 
