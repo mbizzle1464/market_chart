@@ -36,7 +36,13 @@ const MyStocks = props => {
           return stock.symbol;
         })
       );
-      return <div>No Data</div>;
+      return
+       <div className="stripe" />
+          <div className="widget">
+        <h1>My Portfolio</h1>
+            <div className="search-container" />
+          </div>
+      <div>No Data</div>
       // props.getIexData("msft", "company");
     } else {
       return (
