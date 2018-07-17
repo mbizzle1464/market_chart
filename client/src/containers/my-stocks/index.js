@@ -42,7 +42,7 @@ const MyStocks = props => {
         <h1>My Portfolio</h1>
             <div className="search-container" />
           </div>
-      <div>No Data</div>
+      <div>You do not have any data in your profile.</div>
       // props.getIexData("msft", "company");
     } else {
       return (
