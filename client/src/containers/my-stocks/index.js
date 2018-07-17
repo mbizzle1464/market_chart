@@ -28,7 +28,15 @@ const MyStocks = props => {
   // }
   if (!props.awaitingPortfolio) {
     props.getPortfolio(1);
-    return <p>no data</p>;
+    return 
+    <React.Fragment>
+    <div className="stripe" />
+          <div className="widget">
+        <h1>My Portfolio</h1>
+            <div className="search-container" />
+          </div>
+      <div>You do not have any data in your profile.</div>
+      </React.Fragment>
   } else {
     if (!props.receivedPortfolioIex) {
       props.getDescriptionPortfolio(
@@ -37,15 +45,18 @@ const MyStocks = props => {
         })
       );
       return
+          <React.Fragment>
        <div className="stripe" />
           <div className="widget">
         <h1>My Portfolio</h1>
             <div className="search-container" />
           </div>
       <div>You do not have any data in your profile.</div>
+      </React.Fragment>
       // props.getIexData("msft", "company");
     } else {
       return (
+        <React.Fragment>
         <div>
           <div className="stripe" />
           <div className="widget">
@@ -82,6 +93,7 @@ const MyStocks = props => {
             <News />
           </div>
         </div>
+        </React.Fragment>
       );
     }
   }
