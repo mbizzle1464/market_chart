@@ -17,7 +17,7 @@ const addStock = props => {
 
     axios
       .post(
-        `http://localhost:3001/portfolio/testone/${
+        `https://marketchart.herokuapp.com:3001/portfolio/testone/${
           props.symbol
         }/${sharesOwned}/200`,
         {

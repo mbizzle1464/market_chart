@@ -45,9 +45,9 @@ const Home = props => {
             </div>
           </div>
           <div className="add-buttons">
-            <button className="mainButton" onClick={loadAddWatchList}>
+            {/* <button className="mainButton" onClick={loadAddWatchList}>
               Add to Watch List
-            </button>
+            </button> */}
             <button
               className="add-left-margin mainButton"
               onClick={loadAddPortfolio}
