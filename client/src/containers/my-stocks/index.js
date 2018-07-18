@@ -42,7 +42,6 @@ const MyStocks = props => {
       // props.getIexData("msft", "company");
     } else {
       return (
-        <React.Fragment>
         <div>
           <div className="stripe" />
           <div className="widget">
@@ -79,7 +78,6 @@ const MyStocks = props => {
             <News />
           </div>
         </div>
-        </React.Fragment>
       );
     }
   }
