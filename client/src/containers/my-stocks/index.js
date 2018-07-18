@@ -28,8 +28,7 @@ const MyStocks = props => {
   // }
   if (!props.awaitingPortfolio) {
     props.getPortfolio(1);
-    return 
-    <p>No Data.</p>
+    return <p>no data</p>;
   } else {
     if (!props.receivedPortfolioIex) {
       props.getDescriptionPortfolio(
@@ -37,8 +36,7 @@ const MyStocks = props => {
           return stock.symbol;
         })
       );
-       return 
-      <div>You do not have any data in your profile.</div> 
+      return <div>No Data</div>;
       // props.getIexData("msft", "company");
     } else {
       return (
@@ -85,10 +83,7 @@ const MyStocks = props => {
 
 /*
 const MyStocks = props => {
-
-
   //   const currentCompany = props.path.split("/");
-
   //   if (!props.website) {
   //     props.getIexData(currentCompany[2], "book");
   //     props.getIexData(currentCompany[2], "company");
