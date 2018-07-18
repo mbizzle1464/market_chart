@@ -37,15 +37,8 @@ const MyStocks = props => {
           return stock.symbol;
         })
       );
-      return
-      <React.Fragment>
-       <div className="stripe" />
-          <div className="widget">
-        <h1>My Portfolio</h1>
-            <div className="search-container" />
-          </div>
-      <div>You do not have any data in your profile.</div>
-      </React.Fragment>
+       return 
+      <div>You do not have any data in your profile.</div> 
       // props.getIexData("msft", "company");
     } else {
       return (
