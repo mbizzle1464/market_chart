@@ -29,14 +29,7 @@ const MyStocks = props => {
   if (!props.awaitingPortfolio) {
     props.getPortfolio(1);
     return 
-    <React.Fragment>
-    <div className="stripe" />
-          <div className="widget">
-        <h1>My Portfolio</h1>
-            <div className="search-container" />
-          </div>
-      <div>You do not have any data in your profile.</div>
-      </React.Fragment>
+    <p>No Data.</p>
   } else {
     if (!props.receivedPortfolioIex) {
       props.getDescriptionPortfolio(
@@ -45,7 +38,7 @@ const MyStocks = props => {
         })
       );
       return
-          <React.Fragment>
+      <React.Fragment>
        <div className="stripe" />
           <div className="widget">
         <h1>My Portfolio</h1>
